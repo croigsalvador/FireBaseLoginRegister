@@ -9,9 +9,7 @@
 import Foundation
 import Firebase
 
-
-
-class WalkthroughDependencies {
+class WalkthroughDependencies : Depedencies {
     
     var navigator: AppRootNavigator!
     
@@ -45,15 +43,6 @@ class WalkthroughDependencies {
     }
     
     private func viewController(for name:String) -> UIViewController {
-        let storyboard = UIStoryboard(name: "Session", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier:name)
-    }
-    
-    private func sessionPersistor() -> UserSessionPersistor {
-        return UserSessionPersistor(UserDefaultsStorageCoordinator(UserDefaults.standard, modelKey: "UserSession", serializer:ItemSerializer()))
-    }
-    
-    private func fireBase() -> DatabaseReference {
-        return Database.database().reference(withPath: "users")
+        return viewController("Session", name)
     }
 }

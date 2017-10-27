@@ -8,14 +8,12 @@
 
 import Foundation
 import UIKit
-import Firebase
-import FirebaseAuth
 import FacebookLogin
 import GoogleSignIn
 
-class ProfileDependencies {
+class ProfileDependencies: Depedencies {
 
-    var navigator: ProfileRootNavigator!
+    var navigator: AppRootNavigator!
     
     func profileViewController() -> ProfileViewController {
         let walkViewController = viewController(for: "ProfileViewController") as! ProfileViewController
@@ -26,20 +24,12 @@ class ProfileDependencies {
     }
     
     private func sessionUserLogOut() -> SessionUserLogOutUseCase {
-        let sessionPersistor = UserSessionPersistor(UserDefaultsStorageCoordinator(UserDefaults.standard, modelKey: "UserSession", serializer:ItemSerializer()))
-        let sessionLogout = SessionUserLogOut.init(notificationCenter: NotificationCenter.default, networkFactory: SocialLogOutNetworProviderkFactory(fbProvider: FacebookLogoutNetworkProvider(manager: LoginManager()),googleProvider:GoogleLogoutNetworkProvider(manager: GIDSignIn.sharedInstance())),sessionPersistor:sessionPersistor, sessionProvider:SessionLogoutNetworkProvider())
+        let sessionLogout = SessionUserLogOut.init(notificationCenter: NotificationCenter.default, networkFactory: SocialLogOutNetworProviderkFactory(fbProvider: FacebookLogoutNetworkProvider(manager: LoginManager()),googleProvider:GoogleLogoutNetworkProvider(manager: GIDSignIn.sharedInstance())),sessionPersistor:sessionPersistor(), sessionProvider:SessionLogoutNetworkProvider())
         return sessionLogout
     }
     
-
-    
     private func viewController(for name:String) -> UIViewController {
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier:name)
-    }
-    
-    private func fireBase() -> DatabaseReference {
-        return Database.database().reference(withPath: "users")
+        return viewController("Profile", name)
     }
 
 }

@@ -43,7 +43,6 @@ struct UserSession {
 }
 
 extension UserSession {
-    
     init(id: String, name: String, email:String) {
         self.id = id
         self.email = email
@@ -52,9 +51,7 @@ extension UserSession {
         self.token = nil
         self.idToken = nil
     }
-    
 }
-
 
 extension UserSession : Serializable {
     static let kPropertyUserSessionId = "id"

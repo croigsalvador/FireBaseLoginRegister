@@ -9,7 +9,6 @@
 import UIKit
 
 protocol RootNavigatorProtocol {
-    var tabBarController: UITabBarController? {get set}
     var currentNavigationController: UINavigationController? {get set}
     var currentlyPresentedViewController: UIViewController? {get}
     var currentlyPresentedNavigationController: UINavigationController? {get}
@@ -19,7 +18,6 @@ protocol RootNavigatorProtocol {
 
 class RootNavigator:NSObject,RootNavigatorProtocol {
     
-    var tabBarController: UITabBarController?
     var currentNavigationController: UINavigationController?
     var currentlyPresentedViewController: UIViewController? {
         return currentNavigationController?.presentedViewController

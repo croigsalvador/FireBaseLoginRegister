@@ -26,6 +26,6 @@ protocol SessionUserLogOutUseCase {
 
 extension SessionUserLogOutUseCase {
     func userDidLogout(_ user: UserSession){
-        notificationCenter?.post(name:.UserDidLoginNotification, object: nil, userInfo: ["UserSession":user])
+        notificationCenter?.post(name:.UserDidLogoutNotification, object: nil, userInfo: ["UserSession":user])
     }
 }

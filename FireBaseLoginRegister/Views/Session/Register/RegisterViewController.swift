@@ -22,7 +22,6 @@ class RegisterViewController: UITableViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         presenter.register(name: nameTextField.text, email: emailTextField.text, password: passwordTextField.text)
     }
-
 }
 
 extension RegisterViewController: UITextFieldDelegate {

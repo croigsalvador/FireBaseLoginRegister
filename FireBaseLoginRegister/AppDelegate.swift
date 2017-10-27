@@ -9,6 +9,7 @@
 import UIKit
 import FacebookCore
 import GoogleSignIn
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         FirebaseApp.configure()
         installRootNavigator()
-        registerNotifications(application)
+
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -41,9 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func installRootNavigator() {
-        navigator = AppRootNavigator(walkthroughDependencies: WalkthroughDependencies())
+        navigator = AppRootNavigator(WalkthroughDependencies(),ProfileDependencies(), sessionPersistor:sessionPersistor())
         navigator.installRootViewController(in: window!)
         window?.makeKeyAndVisible()
+    }
+    
+    private func sessionPersistor() -> UserSessionPersistor {
+        return UserSessionPersistor(UserDefaultsStorageCoordinator(UserDefaults.standard, modelKey: "UserSession", serializer:ItemSerializer()))
     }
 
 }
