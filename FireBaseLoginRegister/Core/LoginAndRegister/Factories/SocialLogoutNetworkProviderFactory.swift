@@ -13,8 +13,6 @@ class SocialLogOutNetworProviderkFactory {
     private let fbProvider : SocialLogoutProvider
     private let googleProvider : SocialLogoutProvider
 
-    
-    
     init(fbProvider: FacebookLogoutNetworkProvider,googleProvider: SocialLogoutProvider) {
         self.fbProvider = fbProvider
         self.googleProvider = googleProvider
@@ -22,15 +20,15 @@ class SocialLogOutNetworProviderkFactory {
     
     func logOut(user: UserSession) {
         switch user.loginType {
-        case "facebook":
+        case UserSessionType.facebook.rawValue:
             fbProvider.logOut()
             break
-        case "google":
+        case UserSessionType.google.rawValue:
             googleProvider.logOut()
             break
-        case "twitter":
+        case UserSessionType.twitter.rawValue:
             break
-        case "mail":
+        case UserSessionType.mail.rawValue:
             break
         default:
             break
