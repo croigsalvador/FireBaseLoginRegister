@@ -14,6 +14,10 @@
 		0F066C7A1FA37BB900F713E9 /* WalkThroughPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C791FA37BB900F713E9 /* WalkThroughPresenterTests.swift */; };
 		0F066C7D1FA37F1A00F713E9 /* StubWalkthroughNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C7C1FA37F1A00F713E9 /* StubWalkthroughNavigator.swift */; };
 		0F066C7F1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C7E1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift */; };
+		0F066C821FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C811FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift */; };
+		0F066C861FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C851FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift */; };
+		0F066C881FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C871FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift */; };
+		0F066C8A1FA38AB700F713E9 /* MokUserSessionPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C891FA38AB700F713E9 /* MokUserSessionPersistor.swift */; };
 		0F2CEC921FA248F700A1A942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CEC911FA248F700A1A942 /* AppDelegate.swift */; };
 		0F2CEC941FA248F700A1A942 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CEC931FA248F700A1A942 /* ViewController.swift */; };
 		0F2CEC991FA248F700A1A942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2CEC981FA248F700A1A942 /* Assets.xcassets */; };
@@ -90,6 +94,10 @@
 		0F066C791FA37BB900F713E9 /* WalkThroughPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughPresenterTests.swift; sourceTree = "<group>"; };
 		0F066C7C1FA37F1A00F713E9 /* StubWalkthroughNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubWalkthroughNavigator.swift; sourceTree = "<group>"; };
 		0F066C7E1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSocialSessionUserLoginUseCase.swift; sourceTree = "<group>"; };
+		0F066C811FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSessionUserLoginUseCaseTests.swift; sourceTree = "<group>"; };
+		0F066C851FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubSocialLoginNetworkProviderFactory.swift; sourceTree = "<group>"; };
+		0F066C871FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionUserNetworkProvider.swift; sourceTree = "<group>"; };
+		0F066C891FA38AB700F713E9 /* MokUserSessionPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokUserSessionPersistor.swift; sourceTree = "<group>"; };
 		0F2CEC8E1FA248F700A1A942 /* FireBaseLoginRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireBaseLoginRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2CEC911FA248F700A1A942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F2CEC931FA248F700A1A942 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +211,9 @@
 			children = (
 				0F066C7C1FA37F1A00F713E9 /* StubWalkthroughNavigator.swift */,
 				0F066C7E1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift */,
+				0F066C851FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift */,
+				0F066C871FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift */,
+				0F066C891FA38AB700F713E9 /* MokUserSessionPersistor.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 				0F2CECA81FA248F700A1A942 /* Info.plist */,
 				0F066C791FA37BB900F713E9 /* WalkThroughPresenterTests.swift */,
 				0F066C801FA381E700F713E9 /* TestDoubles */,
+				0F066C811FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift */,
 			);
 			path = FireBaseLoginRegisterTests;
 			sourceTree = "<group>";
@@ -831,8 +843,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F066C7D1FA37F1A00F713E9 /* StubWalkthroughNavigator.swift in Sources */,
+				0F066C8A1FA38AB700F713E9 /* MokUserSessionPersistor.swift in Sources */,
 				0F066C7A1FA37BB900F713E9 /* WalkThroughPresenterTests.swift in Sources */,
+				0F066C821FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift in Sources */,
 				0F066C7F1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift in Sources */,
+				0F066C861FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift in Sources */,
+				0F066C881FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
