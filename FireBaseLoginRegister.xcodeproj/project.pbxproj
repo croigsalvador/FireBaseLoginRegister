@@ -14,6 +14,21 @@
 		0F2CEC9C1FA248F700A1A942 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2CEC9A1FA248F700A1A942 /* LaunchScreen.storyboard */; };
 		0F2CECA71FA248F700A1A942 /* FireBaseLoginRegisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CECA61FA248F700A1A942 /* FireBaseLoginRegisterTests.swift */; };
 		0F2CECB21FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CECB11FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift */; };
+		0F3BA5591FA3317C00297004 /* SessionUserNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5461FA3317C00297004 /* SessionUserNetworkProvider.swift */; };
+		0F3BA55A1FA3317C00297004 /* SocialNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5471FA3317C00297004 /* SocialNetworkProvider.swift */; };
+		0F3BA55B1FA3317C00297004 /* FacebookLogoutNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5481FA3317C00297004 /* FacebookLogoutNetworkProvider.swift */; };
+		0F3BA55C1FA3317C00297004 /* FacebookLoginNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5491FA3317C00297004 /* FacebookLoginNetworkProvider.swift */; };
+		0F3BA55D1FA3317C00297004 /* GoogleLogoutNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA54A1FA3317C00297004 /* GoogleLogoutNetworkProvider.swift */; };
+		0F3BA55E1FA3317C00297004 /* GoogleLoginNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA54B1FA3317C00297004 /* GoogleLoginNetworkProvider.swift */; };
+		0F3BA55F1FA3317C00297004 /* UserSessionPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA54D1FA3317C00297004 /* UserSessionPersistor.swift */; };
+		0F3BA5601FA3317C00297004 /* SocialLoginNetworkProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA54F1FA3317C00297004 /* SocialLoginNetworkProviderFactory.swift */; };
+		0F3BA5611FA3317C00297004 /* SocialLogoutNetworkProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5501FA3317C00297004 /* SocialLogoutNetworkProviderFactory.swift */; };
+		0F3BA5621FA3317C00297004 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5521FA3317C00297004 /* UserSession.swift */; };
+		0F3BA5631FA3317C00297004 /* SessionUserLogOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5541FA3317C00297004 /* SessionUserLogOut.swift */; };
+		0F3BA5641FA3317C00297004 /* LoginUserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5551FA3317C00297004 /* LoginUserSession.swift */; };
+		0F3BA5651FA3317C00297004 /* RegisterUserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5561FA3317C00297004 /* RegisterUserSession.swift */; };
+		0F3BA5661FA3317C00297004 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5571FA3317C00297004 /* SessionProtocols.swift */; };
+		0F3BA5671FA3317C00297004 /* SocialSessionUserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5581FA3317C00297004 /* SocialSessionUserLogin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +62,21 @@
 		0F2CECAD1FA248F700A1A942 /* FireBaseLoginRegisterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireBaseLoginRegisterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2CECB11FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseLoginRegisterUITests.swift; sourceTree = "<group>"; };
 		0F2CECB31FA248F700A1A942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F3BA5461FA3317C00297004 /* SessionUserNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionUserNetworkProvider.swift; sourceTree = "<group>"; };
+		0F3BA5471FA3317C00297004 /* SocialNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworkProvider.swift; sourceTree = "<group>"; };
+		0F3BA5481FA3317C00297004 /* FacebookLogoutNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLogoutNetworkProvider.swift; sourceTree = "<group>"; };
+		0F3BA5491FA3317C00297004 /* FacebookLoginNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginNetworkProvider.swift; sourceTree = "<group>"; };
+		0F3BA54A1FA3317C00297004 /* GoogleLogoutNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLogoutNetworkProvider.swift; sourceTree = "<group>"; };
+		0F3BA54B1FA3317C00297004 /* GoogleLoginNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleLoginNetworkProvider.swift; sourceTree = "<group>"; };
+		0F3BA54D1FA3317C00297004 /* UserSessionPersistor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSessionPersistor.swift; sourceTree = "<group>"; };
+		0F3BA54F1FA3317C00297004 /* SocialLoginNetworkProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialLoginNetworkProviderFactory.swift; sourceTree = "<group>"; };
+		0F3BA5501FA3317C00297004 /* SocialLogoutNetworkProviderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialLogoutNetworkProviderFactory.swift; sourceTree = "<group>"; };
+		0F3BA5521FA3317C00297004 /* UserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		0F3BA5541FA3317C00297004 /* SessionUserLogOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionUserLogOut.swift; sourceTree = "<group>"; };
+		0F3BA5551FA3317C00297004 /* LoginUserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUserSession.swift; sourceTree = "<group>"; };
+		0F3BA5561FA3317C00297004 /* RegisterUserSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserSession.swift; sourceTree = "<group>"; };
+		0F3BA5571FA3317C00297004 /* SessionProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
+		0F3BA5581FA3317C00297004 /* SocialSessionUserLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialSessionUserLogin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +127,8 @@
 		0F2CEC901FA248F700A1A942 /* FireBaseLoginRegister */ = {
 			isa = PBXGroup;
 			children = (
+				0F3BA5421FA3315200297004 /* Core */,
+				0F3BA5431FA3315200297004 /* Views */,
 				0F2CEC911FA248F700A1A942 /* AppDelegate.swift */,
 				0F2CEC931FA248F700A1A942 /* ViewController.swift */,
 				0F2CEC951FA248F700A1A942 /* Main.storyboard */,
@@ -123,6 +155,83 @@
 				0F2CECB31FA248F700A1A942 /* Info.plist */,
 			);
 			path = FireBaseLoginRegisterUITests;
+			sourceTree = "<group>";
+		};
+		0F3BA5421FA3315200297004 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BA5441FA3317C00297004 /* LoginAndRegister */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0F3BA5431FA3315200297004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0F3BA5441FA3317C00297004 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BA5451FA3317C00297004 /* Providers */,
+				0F3BA54C1FA3317C00297004 /* Persistors */,
+				0F3BA54E1FA3317C00297004 /* Factories */,
+				0F3BA5511FA3317C00297004 /* Model */,
+				0F3BA5531FA3317C00297004 /* UseCases */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
+		0F3BA5451FA3317C00297004 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BA5461FA3317C00297004 /* SessionUserNetworkProvider.swift */,
+				0F3BA5471FA3317C00297004 /* SocialNetworkProvider.swift */,
+				0F3BA5481FA3317C00297004 /* FacebookLogoutNetworkProvider.swift */,
+				0F3BA5491FA3317C00297004 /* FacebookLoginNetworkProvider.swift */,
+				0F3BA54A1FA3317C00297004 /* GoogleLogoutNetworkProvider.swift */,
+				0F3BA54B1FA3317C00297004 /* GoogleLoginNetworkProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		0F3BA54C1FA3317C00297004 /* Persistors */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BA54D1FA3317C00297004 /* UserSessionPersistor.swift */,
+			);
+			path = Persistors;
+			sourceTree = "<group>";
+		};
+		0F3BA54E1FA3317C00297004 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BA54F1FA3317C00297004 /* SocialLoginNetworkProviderFactory.swift */,
+				0F3BA5501FA3317C00297004 /* SocialLogoutNetworkProviderFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		0F3BA5511FA3317C00297004 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BA5521FA3317C00297004 /* UserSession.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F3BA5531FA3317C00297004 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				0F3BA5541FA3317C00297004 /* SessionUserLogOut.swift */,
+				0F3BA5551FA3317C00297004 /* LoginUserSession.swift */,
+				0F3BA5561FA3317C00297004 /* RegisterUserSession.swift */,
+				0F3BA5571FA3317C00297004 /* SessionProtocols.swift */,
+				0F3BA5581FA3317C00297004 /* SocialSessionUserLogin.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +369,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2CEC941FA248F700A1A942 /* ViewController.swift in Sources */,
+				0F3BA55C1FA3317C00297004 /* FacebookLoginNetworkProvider.swift in Sources */,
+				0F3BA55B1FA3317C00297004 /* FacebookLogoutNetworkProvider.swift in Sources */,
+				0F3BA5621FA3317C00297004 /* UserSession.swift in Sources */,
+				0F3BA5601FA3317C00297004 /* SocialLoginNetworkProviderFactory.swift in Sources */,
 				0F2CEC921FA248F700A1A942 /* AppDelegate.swift in Sources */,
+				0F3BA5631FA3317C00297004 /* SessionUserLogOut.swift in Sources */,
+				0F3BA5671FA3317C00297004 /* SocialSessionUserLogin.swift in Sources */,
+				0F3BA5611FA3317C00297004 /* SocialLogoutNetworkProviderFactory.swift in Sources */,
+				0F3BA55E1FA3317C00297004 /* GoogleLoginNetworkProvider.swift in Sources */,
+				0F3BA55D1FA3317C00297004 /* GoogleLogoutNetworkProvider.swift in Sources */,
+				0F3BA5661FA3317C00297004 /* SessionProtocols.swift in Sources */,
+				0F3BA55A1FA3317C00297004 /* SocialNetworkProvider.swift in Sources */,
+				0F3BA5641FA3317C00297004 /* LoginUserSession.swift in Sources */,
+				0F3BA5651FA3317C00297004 /* RegisterUserSession.swift in Sources */,
+				0F3BA5591FA3317C00297004 /* SessionUserNetworkProvider.swift in Sources */,
+				0F3BA55F1FA3317C00297004 /* UserSessionPersistor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
