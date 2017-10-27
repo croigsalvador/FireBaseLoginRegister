@@ -47,9 +47,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
     
+    private func setupServices() {
+        let logoutService = LogoutListenService(NotificationCenter.default, self)
+        logoutService.start()
+    }
+    
     private func sessionPersistor() -> UserSessionPersistor {
         return UserSessionPersistor(UserDefaultsStorageCoordinator(UserDefaults.standard, modelKey: "UserSession", serializer:ItemSerializer()))
     }
 
 }
 
+extension AppDelegate: LogoutListenServiceDelegate {
+    func userDidLogout() {
+        navigator.walkthroughViewController()
+    }
+}

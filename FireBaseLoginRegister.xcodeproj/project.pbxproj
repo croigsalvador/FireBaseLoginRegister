@@ -10,6 +10,7 @@
 		0F066C701FA33C7500F713E9 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C6F1FA33C7500F713E9 /* Dependencies.swift */; };
 		0F066C721FA33D9600F713E9 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C711FA33D9500F713E9 /* Optional.swift */; };
 		0F066C741FA3427500F713E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F066C731FA3427400F713E9 /* GoogleService-Info.plist */; };
+		0F066C781FA3469F00F713E9 /* LogoutListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C771FA3469F00F713E9 /* LogoutListService.swift */; };
 		0F2CEC921FA248F700A1A942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CEC911FA248F700A1A942 /* AppDelegate.swift */; };
 		0F2CEC941FA248F700A1A942 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CEC931FA248F700A1A942 /* ViewController.swift */; };
 		0F2CEC991FA248F700A1A942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2CEC981FA248F700A1A942 /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 		0F066C6F1FA33C7500F713E9 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		0F066C711FA33D9500F713E9 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		0F066C731FA3427400F713E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0F066C771FA3469F00F713E9 /* LogoutListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutListService.swift; sourceTree = "<group>"; };
 		0F2CEC8E1FA248F700A1A942 /* FireBaseLoginRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireBaseLoginRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2CEC911FA248F700A1A942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F2CEC931FA248F700A1A942 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -170,12 +172,21 @@
 		0F066C751FA345D000F713E9 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				0F066C6F1FA33C7500F713E9 /* Dependencies.swift */,
 				0F3BA5B81FA33A5900297004 /* FormErrorProtocol.swift */,
 				0F066C711FA33D9500F713E9 /* Optional.swift */,
 				0F3BA5B91FA33A5900297004 /* Presenter.swift */,
 				0F3BA5BF1FA33AEF00297004 /* NotificationNames.swift */,
 			);
 			path = Commons;
+			sourceTree = "<group>";
+		};
+		0F066C761FA3466E00F713E9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0F066C771FA3469F00F713E9 /* LogoutListService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		0F2CEC851FA248F600A1A942 = {
@@ -236,6 +247,7 @@
 		0F3BA5421FA3315200297004 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0F066C761FA3466E00F713E9 /* Services */,
 				0F3BA5BE1FA33A7200297004 /* TextValidator */,
 				0F066C751FA345D000F713E9 /* Commons */,
 				0F3BA5B71FA339EF00297004 /* ImagePicker */,
@@ -243,7 +255,6 @@
 				0F3BA58D1FA3330900297004 /* Storages */,
 				0F3BA5801FA332DC00297004 /* Dependencies */,
 				0F3BA5441FA3317C00297004 /* LoginAndRegister */,
-				0F066C6F1FA33C7500F713E9 /* Dependencies.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -711,6 +722,7 @@
 				0F3BA55D1FA3317C00297004 /* GoogleLogoutNetworkProvider.swift in Sources */,
 				0F3BA5661FA3317C00297004 /* SessionProtocols.swift in Sources */,
 				0F066C721FA33D9600F713E9 /* Optional.swift in Sources */,
+				0F066C781FA3469F00F713E9 /* LogoutListService.swift in Sources */,
 				0F3BA5BD1FA33A6800297004 /* TextValidator.swift in Sources */,
 				0F3BA5791FA3329A00297004 /* WalkthroughNavigator.swift in Sources */,
 				0F3BA5C01FA33AEF00297004 /* NotificationNames.swift in Sources */,

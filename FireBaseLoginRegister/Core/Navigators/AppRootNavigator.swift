@@ -39,7 +39,7 @@ class AppRootNavigator: RootNavigator {
         }
     }
     
-    fileprivate func  walkthroughViewController() {
+    func  walkthroughViewController() {
         let initialViewController = UINavigationController.init(rootViewController: walkthroughDependencies.walkThroughViewController())
         setupRootViewController(initialViewController)
     }
