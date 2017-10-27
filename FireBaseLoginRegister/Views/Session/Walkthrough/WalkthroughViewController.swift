@@ -23,10 +23,6 @@ class WalkthroughViewController: UIViewController {
     @IBAction func googleButtonPressed(_ sender: Any) {
         presenter.google()
     }
-
-    @IBAction func twitterButtonPressed(_ sender: UIButton) {
-        
-    }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         presenter.login()
