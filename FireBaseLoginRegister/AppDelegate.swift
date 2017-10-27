@@ -16,12 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var navigator: AppRootNavigator!
+    var logoutService: LogoutListenService!
     
     public func application(_ application: UIApplication,  didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         createWindow()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         FirebaseApp.configure()
         installRootNavigator()
+        setupServices()
 
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -48,14 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupServices() {
-        let logoutService = LogoutListenService(NotificationCenter.default, self)
+        logoutService = LogoutListenService(NotificationCenter.default, self)
         logoutService.start()
     }
     
     private func sessionPersistor() -> UserSessionPersistor {
         return UserSessionPersistor(UserDefaultsStorageCoordinator(UserDefaults.standard, modelKey: "UserSession", serializer:ItemSerializer()))
     }
-
 }
 
 extension AppDelegate: LogoutListenServiceDelegate {

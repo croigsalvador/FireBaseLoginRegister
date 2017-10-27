@@ -16,7 +16,6 @@ class SessionUserLogOut: SessionUserLogOutUseCase {
     private let sessionPersistor: UserSessionPersistor
     internal var notificationCenter: NotificationCenter?
     private let sessionProvider: SessionLogoutNetworkProvider
-
     
     init(notificationCenter:NotificationCenter, networkFactory: SocialLogOutNetworProviderkFactory, sessionPersistor: UserSessionPersistor, sessionProvider: SessionLogoutNetworkProvider) {
         self.networkFactory = networkFactory
