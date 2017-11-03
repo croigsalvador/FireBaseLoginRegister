@@ -21,7 +21,9 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         mockNotificationCenter = MockNotificationCenter()
-        stubSocialProviderFactory = StubSocialLoginNetworkProviderFactory(view:UIViewController())
+        let dummieFacebookProvider = DummyFactory.dummy(someClass:FacebookLoginNetworkProvider.self)
+        let dummieGoogleProvider = DummyFactory.dummy(someClass:GoogleLoginNetworkProvider.self)
+        stubSocialProviderFactory = StubSocialLoginNetworkProviderFactory(dummieFacebookProvider,dummieGoogleProvider)
         mockSessionUserProvider = MockSessionUserNetworkProvider()
         mockSessionPersistor = MockUserSessionPersistor()
         

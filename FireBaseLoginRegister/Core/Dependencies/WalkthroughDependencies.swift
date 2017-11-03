@@ -8,6 +8,8 @@
 
 import Foundation
 import Firebase
+import FacebookLogin
+import GoogleSignIn
 
 class WalkthroughDependencies : Depedencies {
     
@@ -39,7 +41,8 @@ class WalkthroughDependencies : Depedencies {
     }
     
     private func socialSession(view: UIViewController) -> SocialSessionUserLoginUseCase {
-        return SocialSessionUserLogin(notificationCenter: NotificationCenter.default, socialProviderFactory:SocialLoginNetworkProviderFactory(view: view), sessionProvider:sessionUserProvider(), sessionPersistor:sessionPersistor())
+        let factory = SocialLoginNetworkProviderFactory(FacebookLoginNetworkProvider(manager:LoginManager(), view:view), GoogleLoginNetworkProvider(manager:GIDSignIn.sharedInstance(), view:view))
+        return SocialSessionUserLogin(notificationCenter: NotificationCenter.default, socialProviderFactory:factory, sessionProvider:sessionUserProvider(), sessionPersistor:sessionPersistor())
     }
     
     private func viewController(for name:String) -> UIViewController {
@@ -47,6 +50,6 @@ class WalkthroughDependencies : Depedencies {
     }
     
     private func sessionUserProvider() -> SessionUserNetworkProvider {
-        return SessionUserFirebaseProvider.init(Database.database(), Auth.auth())
+        return SessionUserFirebaseProvider(Database.database(), Auth.auth())
     }
 }
