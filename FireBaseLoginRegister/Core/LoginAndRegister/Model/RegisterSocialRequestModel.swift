@@ -1,5 +1,5 @@
 //
-//  SessionUserNetworkProvider.swift
+//  RegisterSocialRequestModel.swift
 //  FireBaseLoginRegister
 //
 //  Created by Carlos Roig on 3/11/17.

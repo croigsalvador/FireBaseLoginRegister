@@ -10,9 +10,9 @@ import Foundation
 @testable import FireBaseLoginRegister
 
 class MockSessionUserNetworkProvider :  SessionUserNetworkProvider {
-    
+    var registerCalled = false
     
     override func register(userSession: UserSession, with success: @escaping (UserSession?) -> ()) {
-        
+        registerCalled = true
     }
 }

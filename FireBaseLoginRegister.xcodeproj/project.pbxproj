@@ -65,6 +65,9 @@
 		0F3BA5BB1FA33A5900297004 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5B91FA33A5900297004 /* Presenter.swift */; };
 		0F3BA5BD1FA33A6800297004 /* TextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5BC1FA33A6800297004 /* TextValidator.swift */; };
 		0F3BA5C01FA33AEF00297004 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5BF1FA33AEF00297004 /* NotificationNames.swift */; };
+		0F4314E61FAC7AEA008704E5 /* SessionLogoutNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4314E51FAC7AEA008704E5 /* SessionLogoutNetworkProvider.swift */; };
+		0F4314E81FAC7D42008704E5 /* StubFirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4314E71FAC7D42008704E5 /* StubFirebaseDatabase.swift */; };
+		0F8BEE0A1FAC800300206403 /* StubFirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BEE091FAC800300206403 /* StubFirebaseAuth.swift */; };
 		2C1FB42F50DE809EC6088573 /* Pods_FireBaseLoginRegisterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 968A2EC07DB534B607F535E8 /* Pods_FireBaseLoginRegisterTests.framework */; };
 		E54E3B7195B0547EB93905ED /* Pods_FireBaseLoginRegister.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA9E2C4176D5885D1637662 /* Pods_FireBaseLoginRegister.framework */; };
 /* End PBXBuildFile section */
@@ -151,6 +154,9 @@
 		0F3BA5B91FA33A5900297004 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		0F3BA5BC1FA33A6800297004 /* TextValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextValidator.swift; sourceTree = "<group>"; };
 		0F3BA5BF1FA33AEF00297004 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
+		0F4314E51FAC7AEA008704E5 /* SessionLogoutNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogoutNetworkProvider.swift; sourceTree = "<group>"; };
+		0F4314E71FAC7D42008704E5 /* StubFirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFirebaseDatabase.swift; sourceTree = "<group>"; };
+		0F8BEE091FAC800300206403 /* StubFirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubFirebaseAuth.swift; sourceTree = "<group>"; };
 		13FC0083E4B7041EA1E06903 /* Pods-FireBaseLoginRegisterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireBaseLoginRegisterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FireBaseLoginRegisterTests/Pods-FireBaseLoginRegisterTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C503DADCBD8F3A758CA65B4 /* Pods-FireBaseLoginRegister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireBaseLoginRegister.release.xcconfig"; path = "Pods/Target Support Files/Pods-FireBaseLoginRegister/Pods-FireBaseLoginRegister.release.xcconfig"; sourceTree = "<group>"; };
 		968A2EC07DB534B607F535E8 /* Pods_FireBaseLoginRegisterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireBaseLoginRegisterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +220,8 @@
 				0F066C851FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift */,
 				0F066C871FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift */,
 				0F066C891FA38AB700F713E9 /* MokUserSessionPersistor.swift */,
+				0F4314E71FAC7D42008704E5 /* StubFirebaseDatabase.swift */,
+				0F8BEE091FAC800300206403 /* StubFirebaseAuth.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -320,6 +328,7 @@
 				0F3BA5491FA3317C00297004 /* FacebookLoginNetworkProvider.swift */,
 				0F3BA54A1FA3317C00297004 /* GoogleLogoutNetworkProvider.swift */,
 				0F3BA54B1FA3317C00297004 /* GoogleLoginNetworkProvider.swift */,
+				0F4314E51FAC7AEA008704E5 /* SessionLogoutNetworkProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -665,12 +674,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FireBaseLoginRegisterTests/Pods-FireBaseLoginRegisterTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-Core/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -828,6 +839,7 @@
 				0F3BA5591FA3317C00297004 /* SessionUserNetworkProvider.swift in Sources */,
 				0F3BA55F1FA3317C00297004 /* UserSessionPersistor.swift in Sources */,
 				0F3BA5BA1FA33A5900297004 /* FormErrorProtocol.swift in Sources */,
+				0F4314E61FAC7AEA008704E5 /* SessionLogoutNetworkProvider.swift in Sources */,
 				0F3BA5BB1FA33A5900297004 /* Presenter.swift in Sources */,
 				0F3BA5991FA3330900297004 /* InMemorySorageCoordinator.swift in Sources */,
 				0F3BA57D1FA3329A00297004 /* WalkThroughPresenter.swift in Sources */,
@@ -843,10 +855,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F066C7D1FA37F1A00F713E9 /* StubWalkthroughNavigator.swift in Sources */,
+				0F4314E81FAC7D42008704E5 /* StubFirebaseDatabase.swift in Sources */,
 				0F066C8A1FA38AB700F713E9 /* MokUserSessionPersistor.swift in Sources */,
 				0F066C7A1FA37BB900F713E9 /* WalkThroughPresenterTests.swift in Sources */,
 				0F066C821FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift in Sources */,
 				0F066C7F1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift in Sources */,
+				0F8BEE0A1FAC800300206403 /* StubFirebaseAuth.swift in Sources */,
 				0F066C861FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift in Sources */,
 				0F066C881FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift in Sources */,
 			);
