@@ -12,8 +12,8 @@ import Firebase
 
 class StubFirebaseAuth: Auth {
     
-    override class func auth() -> StubFirebaseAuth {
+    override class func auth() -> Auth {
         FirebaseApp.configure()
-        return Auth.auth() as! StubFirebaseAuth
+        return Auth.auth() 
     }
 }

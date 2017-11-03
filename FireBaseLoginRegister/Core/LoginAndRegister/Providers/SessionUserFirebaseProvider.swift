@@ -10,15 +10,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
-typealias RegisterResult = Result<UserSession, Error>
-
-protocol SessionUserNetworkProvider {
-    func register(userSession:UserSession, with success:@escaping (UserSession?)->())
-    func loginUser(with email: String, password: String, completion:@escaping (UserSession?)->())
-}
-
-
-struct SessionUserFirebaseProvider: SessionUserNetworkProvider  {
+struct SessionUserFirebaseProvider : SessionUserNetworkProvider{
     
     fileprivate let auth: Auth
     fileprivate let database: Database
@@ -28,24 +20,25 @@ struct SessionUserFirebaseProvider: SessionUserNetworkProvider  {
         self.auth = auth
     }
     
-    func register(name:String, email: String, password:String, completion:@escaping (UserSession?)->())  {
-        auth.createUser(withEmail: email, password: password) { (user, error) in
+    func register(_ registerParams: RegisterUserBasicParams,_ completion: @escaping (RegisterResult) -> ()) {
+        auth.createUser(withEmail: registerParams.email, password: registerParams.password) { (user, error) in
             guard let user = user else {
-                completion(nil)
+                let result = RegisterResult.failure(error!)
+                completion(result)
                 return
             }
-            let userSession = UserSession(id: user.uid, name: name, email: email)
+            let userSession = UserSession(id: user.uid, name:registerParams.name, email:registerParams.email)
             self.save(userSession, completion: completion)
         }
     }
     
-    func loginUser(with email: String, password: String, completion:@escaping (UserSession?)->())  {
-        auth.signIn(withEmail: email, password: password) { (user, error) in
+    func loginUser(_ loginParams: LoginUserParams, _ completion: @escaping (RegisterResult) -> ()) {
+        auth.signIn(withEmail: loginParams.email, password: loginParams.password) { (user, error) in
             guard let user = user else {
-                completion(nil)
+                completion(RegisterResult.failure(error!))
                 return
             }
-            completion(UserSession(id: user.uid, name: "", email: email))
+            completion(RegisterResult.success(UserSession(id: user.uid, email: loginParams.email)))
         }
     }
     
@@ -56,40 +49,45 @@ struct SessionUserFirebaseProvider: SessionUserNetworkProvider  {
         return nil
     }
     
-    func register(userSession:UserSession, with success:@escaping (UserSession?)->()) {
-        var credential = FacebookAuthProvider.credential(withAccessToken:userSession.token!)
-        if userSession.loginType == UserSessionType.google.rawValue {
-            credential = GoogleAuthProvider.credential(withIDToken: userSession.idToken!,
-                                                       accessToken: userSession.token!)
+    func register(_ request: SocialRequestModel, _ completion: @escaping (RegisterResult) -> ()) {
+        var credential = FacebookAuthProvider.credential(withAccessToken:request.token)
+        if request.loginType == UserSessionType.google {
+            credential = GoogleAuthProvider.credential(withIDToken: request.idToken!,
+                                                       accessToken: request.token)
         }
         
+        register(credential, request, completion)
+    }
+    
+    fileprivate func register(_ credential: AuthCredential, _ request: SocialRequestModel, _ completion: @escaping (RegisterResult) -> ()) {
         auth.signIn(with: credential) { (user, error) in
             print(error?.localizedDescription ?? "No value")
             guard let fUser = user else {
-                success(nil)
+                if let error = error {
+                    completion(RegisterResult.failure(error))
+                }
                 return
             }
-            var userDict =  userSession.serialize()
-            userDict["id"] = fUser.uid as AnyObject
-            let updatedUser = UserSession.init(dictionary: userDict)
-            self.save(updatedUser, completion:success)
+            
+            var updatedUser = UserSession(request)
+            updatedUser.id = fUser.uid
+            self.save(updatedUser, completion:completion)
         }
     }
     
-    fileprivate func save(_ user: UserSession, completion:@escaping (UserSession?)->()) {
+    private func save(_ user: UserSession, completion: @escaping (RegisterResult) -> ()) {
         guard let id = user.id else {
-            completion(nil)
             return
         }
         let usersReference = database.reference(withPath: "users")
         let child = usersReference.child(id)
         let values = ["name": user.name, "email": user.email]
         child.updateChildValues(values, withCompletionBlock: { (error, reference) in
-            guard let _ = error else {
-                completion(user)
+            guard let error = error else {
+                completion(RegisterResult.success(user))
                 return
             }
-            completion(nil)
+            completion(RegisterResult.failure(error))
         })
     }
 }

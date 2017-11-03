@@ -19,7 +19,7 @@ struct UserSession {
     var id: String?
     let token: String?
     let idToken: String?
-    let name: String
+    let name: String?
     let email: String
     let loginType: String
     
@@ -36,20 +36,30 @@ struct UserSession {
         self.id = dictionary[UserSession.kPropertyUserSessionId] as? String
         self.token = dictionary[UserSession.kPropertyUserSessionToken] as? String
         self.idToken = dictionary[UserSession.kPropertyUserSessionIdToken] as? String
-        self.name = dictionary[UserSession.kPropertyUserSessionName] as! String
+        self.name = dictionary[UserSession.kPropertyUserSessionName] as? String
         self.email = dictionary[UserSession.kPropertyUserSessionEmail] as! String
         self.loginType = dictionary[UserSession.kPropertyUserSessionType] as! String
     }
 }
 
 extension UserSession {
-    init(id: String, name: String, email:String) {
+    init(id: String, name: String? = nil, email:String) {
         self.id = id
         self.email = email
         self.name = name
         self.loginType = UserSessionType.mail.rawValue
         self.token = nil
         self.idToken = nil
+    }
+}
+
+extension UserSession {
+    init(_ request: SocialRequestModel) {
+        self.email = request.email
+        self.name = request.name
+        self.loginType = request.loginType.rawValue
+        self.token = request.token
+        self.idToken = request.idToken
     }
 }
 
@@ -65,7 +75,7 @@ extension UserSession : Serializable {
         return [UserSession.kPropertyUserSessionId:self.id.nilToEmpty() as AnyObject,
                 UserSession.kPropertyUserSessionToken:self.token.nilToEmpty() as AnyObject,
                 UserSession.kPropertyUserSessionIdToken:self.idToken.nilToEmpty() as AnyObject,
-                UserSession.kPropertyUserSessionName:self.name as AnyObject,
+                UserSession.kPropertyUserSessionName:self.name.nilToEmpty() as AnyObject,
                 UserSession.kPropertyUserSessionEmail:self.email as AnyObject,
                 UserSession.kPropertyUserSessionType:self.loginType as AnyObject]
     }

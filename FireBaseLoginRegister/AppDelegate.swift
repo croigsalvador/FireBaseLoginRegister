@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func installRootNavigator() {
-        navigator = AppRootNavigator(WalkthroughDependencies(),ProfileDependencies(), sessionPersistor:sessionPersistor())
+        navigator = AppRootNavigator(WalkthroughDependencies(),ProfileDependencies())
         navigator.installRootViewController(in: window!)
         window?.makeKeyAndVisible()
     }
@@ -52,10 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupServices() {
         logoutService = LogoutListenService(NotificationCenter.default, self)
         logoutService.start()
-    }
-    
-    private func sessionPersistor() -> UserSessionPersistor {
-        return UserSessionPersistor(UserDefaultsStorageCoordinator(UserDefaults.standard, modelKey: "UserSession", serializer:ItemSerializer()))
     }
 }
 

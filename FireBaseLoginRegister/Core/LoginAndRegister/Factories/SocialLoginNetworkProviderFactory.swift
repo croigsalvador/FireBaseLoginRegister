@@ -25,7 +25,7 @@ class SocialLoginNetworkProviderFactory {
         self.view = view
     }
     
-    func connect(_ social: SocialType, _ completion:@escaping (UserSession?, Error?)->()) {
+    func connect(_ social: SocialType, _ completion:@escaping (SocialRequestModel?, Error?)->()) {
         switch social {
         case .facebook:
             facebookLogin().connectUser(with: completion)

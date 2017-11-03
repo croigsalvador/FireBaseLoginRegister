@@ -22,7 +22,7 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
         super.setUp()
         notificationCenter = NotificationCenter.default
         stubSocialProviderFactory = StubSocialLoginNetworkProviderFactory(view:UIViewController())
-        mockSessionUserProvider = MockSessionUserNetworkProvider(StubFirebaseDatabase.database(),StubFirebaseAuth.auth())
+        mockSessionUserProvider = MockSessionUserNetworkProvider()
         mockSessionPersistor = MockUserSessionPersistor(PlistStorageCoordinator("Fake", ItemSerializer()))
         
         sut = SocialSessionUserLogin.init(notificationCenter:notificationCenter, socialProviderFactory: stubSocialProviderFactory, sessionProvider:mockSessionUserProvider, sessionPersistor: mockSessionPersistor)
@@ -46,7 +46,7 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
     func testConnect_ShouldCallSessionNetworkProviderRegisterMethod() {
         let expectation = self.expectation(description: "Expecting factory connect return")
         sut.connect(.facebook) { (success) in
-            XCTAssert(self.mockSessionUserProvider.registerCalled)
+            XCTAssert(self.mockSessionUserProvider.called)
             expectation.fulfill()
         }
         

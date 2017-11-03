@@ -47,6 +47,6 @@ class WalkthroughDependencies : Depedencies {
     }
     
     private func sessionUserProvider() -> SessionUserNetworkProvider {
-        return SessionUserNetworkProvider.init(Database.database(), Auth.auth())
+        return SessionUserFirebaseProvider.init(Database.database(), Auth.auth())
     }
 }

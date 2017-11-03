@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+typealias RegisterResult = Result<UserSession, Error>
+
+protocol SessionUserNetworkProvider {
+    func register(_ registerParams: RegisterUserBasicParams,_ completion:@escaping (RegisterResult)->())
+    func register(_ request:SocialRequestModel,_ completion:@escaping (RegisterResult)->())
+    func loginUser(_ loginParams:LoginUserParams,_ completion:@escaping (RegisterResult)->())
+}
+

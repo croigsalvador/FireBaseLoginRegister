@@ -7,3 +7,6 @@
 //
 
 import Foundation
+
+public typealias RegisterUserBasicParams = (name: String,email: String,password: String)
+public typealias LoginUserParams = (email: String, password: String)

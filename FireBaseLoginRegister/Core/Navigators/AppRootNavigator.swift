@@ -14,12 +14,12 @@ class AppRootNavigator: RootNavigator {
     var window: UIWindow!
     let walkthroughDependencies: WalkthroughDependencies
     let profileDependencies: ProfileDependencies
-    fileprivate let sessionPersistor: UserSessionPersistor
+    fileprivate let sessionPersistor: UserSessionPersistorProtocol
     
-    init(_ walkthroughDependencies: WalkthroughDependencies,_ profileDependencies: ProfileDependencies, sessionPersistor:UserSessionPersistor) {
+    init(_ walkthroughDependencies: WalkthroughDependencies,_ profileDependencies: ProfileDependencies) {
         self.walkthroughDependencies = walkthroughDependencies
         self.profileDependencies = profileDependencies
-        self.sessionPersistor = sessionPersistor
+        self.sessionPersistor = profileDependencies.sessionPersistor()
         super.init()
         self.walkthroughDependencies.navigator = self
         self.profileDependencies.navigator = self

@@ -16,7 +16,7 @@ class StubSocialSessionUserLoginUseCase: SocialSessionUserLoginUseCase {
     var success = true
     var connectCalled = false
     
-    func connect(_ social: SocialType, with completion: @escaping (Bool) -> ()) {
+    func connect(_ social: SocialType, _ completion: @escaping (Bool) -> ()) {
         connectCalled = true
         completion(success)
     }
