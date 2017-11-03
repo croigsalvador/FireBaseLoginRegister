@@ -41,17 +41,17 @@ class SocialSessionUserLogin: SocialSessionUserLoginUseCase {
         }
     }
     
-    private func saveData(_ user: UserSession?, _ success:@escaping (Bool)->())  {
+    private func saveData(_ user: UserSession?, _ successHandler:@escaping (Bool)->())  {
         guard let user = user else {
-            success(false)
+            successHandler(false)
             return
         }
-        self.sessionPersistor.save(user, completion: { (fail) in
+        self.sessionPersistor.save(user, completion: { (success) in
             DispatchQueue.main.async {
-                if !fail {
+                if success {
                     self.userDidLogin(user)
                 }
-                success(fail)
+                successHandler(success)
             }
         })
         return

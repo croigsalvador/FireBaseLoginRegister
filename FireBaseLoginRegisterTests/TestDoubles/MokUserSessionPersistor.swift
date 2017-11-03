@@ -14,9 +14,11 @@ class MockUserSessionPersistor: UserSessionPersistorProtocol {
     var removeCalled = false
     var getUserCalled = false
 
+    var success = false
     
     func save(_ user: UserSession, completion: @escaping (Bool) -> Void) {
         saveCalled = true
+        completion(success)
     }
     
     func removeUser() {

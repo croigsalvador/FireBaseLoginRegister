@@ -12,7 +12,7 @@ import XCTest
 class SocialSessionUserLoginUseCaseTests: XCTestCase {
     
     var sut: SocialSessionUserLoginUseCase!
-    var notificationCenter: NotificationCenter!
+    var mockNotificationCenter: MockNotificationCenter!
     var stubSocialProviderFactory: StubSocialLoginNetworkProviderFactory!
     var mockSessionUserProvider: MockSessionUserNetworkProvider!
     var mockSessionPersistor: MockUserSessionPersistor!
@@ -20,15 +20,24 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        notificationCenter = NotificationCenter.default
+        mockNotificationCenter = MockNotificationCenter()
         stubSocialProviderFactory = StubSocialLoginNetworkProviderFactory(view:UIViewController())
         mockSessionUserProvider = MockSessionUserNetworkProvider()
-        mockSessionPersistor = MockUserSessionPersistor(PlistStorageCoordinator("Fake", ItemSerializer()))
+        mockSessionPersistor = MockUserSessionPersistor()
         
-        sut = SocialSessionUserLogin.init(notificationCenter:notificationCenter, socialProviderFactory: stubSocialProviderFactory, sessionProvider:mockSessionUserProvider, sessionPersistor: mockSessionPersistor)
+        sut = SocialSessionUserLogin.init(notificationCenter:mockNotificationCenter, socialProviderFactory: stubSocialProviderFactory, sessionProvider:mockSessionUserProvider, sessionPersistor: mockSessionPersistor)
     }
     
-    func testConnect_ShouldReturNotSuccessWhenErrorIsReturnedFromNetworkTask() {
+    override func tearDown() {
+        mockNotificationCenter = nil
+        stubSocialProviderFactory = nil
+        mockSessionUserProvider = nil
+        mockSessionPersistor = nil
+        sut = nil
+        super.tearDown()
+    }
+    
+    func testConnect_ShouldCallFactoryConnectMethodAndReturnFalseInSuccess() {
         let expectation = self.expectation(description: "Expecting factory connect return")
         stubSocialProviderFactory.error =  NSError(domain:"", code:4, userInfo:nil)
         sut.connect(.facebook) { (success) in
@@ -43,10 +52,11 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
         }
     }
     
-    func testConnect_ShouldCallSessionNetworkProviderRegisterMethod() {
+    func testConnect_ShouldCallSessionNetworkProviderRegisterMethodAndReturnFalseInSuccess() {
         let expectation = self.expectation(description: "Expecting factory connect return")
+        mockSessionUserProvider.error = NSError(domain:"", code:4, userInfo:nil)
         sut.connect(.facebook) { (success) in
-            XCTAssert(self.mockSessionUserProvider.called)
+            XCTAssert(!success)
             expectation.fulfill()
         }
         
@@ -57,5 +67,33 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
         }
     }
     
+    func testConnect_ShouldCallSessionPersitorAndReturnFalseInSuccessClousure(){
+        let expectation = self.expectation(description: "Expecting factory connect return")
+        sut.connect(.facebook) { (success) in
+            XCTAssert(!success)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0) { (error) in
+            if error != nil {
+                print("error")
+            }
+        }
+    }
+    
+    func testConnect_ShouldCallSessionPersitorAndCallNotificationUserDidLoginMethod() {
+        let expectation = self.expectation(description: "Expecting factory connect return")
+        mockSessionPersistor.success = true
+        sut.connect(.facebook) { (success) in
+            XCTAssertTrue(self.mockNotificationCenter.postCalled > 0)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0) { (error) in
+            if error != nil {
+                print("error")
+            }
+        }
+    }
     
 }
