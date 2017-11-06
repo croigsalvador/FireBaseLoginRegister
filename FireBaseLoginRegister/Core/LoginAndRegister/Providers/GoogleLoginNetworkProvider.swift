@@ -37,17 +37,14 @@ class GoogleLoginNetworkProvider: NSObject, SocialLoginNetworkProvider, GIDSignI
             completionHandler(nil,error)
             return
         }
-        
         completionHandler(parse(user), nil)
-        
     }
     
     func parse(_ googleUser: GIDGoogleUser) -> SocialRequestModel? {
         guard let authentication = googleUser.authentication else { return nil }
-        let request = RequestSocialRequestModel.init(idToken: authentication.idToken, token: googleUser.authentication.accessToken, name: googleUser.profile.name, email: googleUser.profile.email, loginType: UserSessionType.google)
+        let request = RequestSocialRequestModel(idToken: authentication.idToken, token: googleUser.authentication.accessToken, name: googleUser.profile.name, email: googleUser.profile.email, loginType: UserSessionType.google)
         
         return request
-        
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
@@ -59,6 +56,6 @@ class GoogleLoginNetworkProvider: NSObject, SocialLoginNetworkProvider, GIDSignI
     }
     
     var isLogged: Bool {
-        return false
+        return manager.currentUser != nil
     }
 }
