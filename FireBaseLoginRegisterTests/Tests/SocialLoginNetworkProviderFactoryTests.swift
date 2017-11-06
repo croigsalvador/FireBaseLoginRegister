@@ -30,7 +30,7 @@ class SocialLoginNetworkProviderFactoryTests: XCTestCase {
         sut = nil
     }
     
-    func testConnect_ShouldCallFacebookProviderConnectMethod() {
+    func testConnect_ShouldCallProviderConnectMethod() {
         let expectation = self.expectation(description: "Expecting factory connect return")
         sut.connect(.facebook) { (request, error) in
             XCTAssertTrue(self.mockFacebookSocialProvider.connectCalled)

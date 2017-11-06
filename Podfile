@@ -20,5 +20,8 @@ target 'FireBaseLoginRegisterTests' do
     use_frameworks!
     pod 'Firebase/Database'
     pod 'Firebase/Auth'
-    
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'GoogleSignIn'
+
 end

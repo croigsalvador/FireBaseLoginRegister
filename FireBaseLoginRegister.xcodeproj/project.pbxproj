@@ -20,6 +20,10 @@
 		0F066C8A1FA38AB700F713E9 /* MokUserSessionPersistor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F066C891FA38AB700F713E9 /* MokUserSessionPersistor.swift */; };
 		0F0833B11FACD99A00A7B5DF /* RegisterSocialRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0833B01FACD99A00A7B5DF /* RegisterSocialRequestModel.swift */; };
 		0F25C1771FAD039A00BD68A5 /* DummieFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25C1761FAD039A00BD68A5 /* DummieFactory.swift */; };
+		0F25C17B1FAD0C5E00BD68A5 /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25C17A1FAD0C5E00BD68A5 /* MockViewController.swift */; };
+		0F25C17F1FB0CE5C00BD68A5 /* GoogleSocialNetworkProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25C17E1FB0CE5C00BD68A5 /* GoogleSocialNetworkProviderTests.swift */; };
+		0F25C1811FB0CEF900BD68A5 /* MockGoogleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25C1801FB0CEF900BD68A5 /* MockGoogleSignIn.swift */; };
+		0F25C1831FB0D63900BD68A5 /* FakeGoogleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25C1821FB0D63900BD68A5 /* FakeGoogleUser.swift */; };
 		0F2CEC921FA248F700A1A942 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CEC911FA248F700A1A942 /* AppDelegate.swift */; };
 		0F2CEC941FA248F700A1A942 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CEC931FA248F700A1A942 /* ViewController.swift */; };
 		0F2CEC991FA248F700A1A942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2CEC981FA248F700A1A942 /* Assets.xcassets */; };
@@ -109,6 +113,10 @@
 		0F066C891FA38AB700F713E9 /* MokUserSessionPersistor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokUserSessionPersistor.swift; sourceTree = "<group>"; };
 		0F0833B01FACD99A00A7B5DF /* RegisterSocialRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSocialRequestModel.swift; sourceTree = "<group>"; };
 		0F25C1761FAD039A00BD68A5 /* DummieFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummieFactory.swift; sourceTree = "<group>"; };
+		0F25C17A1FAD0C5E00BD68A5 /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
+		0F25C17E1FB0CE5C00BD68A5 /* GoogleSocialNetworkProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSocialNetworkProviderTests.swift; sourceTree = "<group>"; };
+		0F25C1801FB0CEF900BD68A5 /* MockGoogleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGoogleSignIn.swift; sourceTree = "<group>"; };
+		0F25C1821FB0D63900BD68A5 /* FakeGoogleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeGoogleUser.swift; sourceTree = "<group>"; };
 		0F2CEC8E1FA248F700A1A942 /* FireBaseLoginRegister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireBaseLoginRegister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2CEC911FA248F700A1A942 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F2CEC931FA248F700A1A942 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +244,9 @@
 				0F67D9C91FACF27900A2A4F3 /* MockNotificationCenter.swift */,
 				0F67D9CE1FACF6D400A2A4F3 /* MockSocialNetworkProvider.swift */,
 				0F25C1761FAD039A00BD68A5 /* DummieFactory.swift */,
+				0F25C17A1FAD0C5E00BD68A5 /* MockViewController.swift */,
+				0F25C1801FB0CEF900BD68A5 /* MockGoogleSignIn.swift */,
+				0F25C1821FB0D63900BD68A5 /* FakeGoogleUser.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -529,6 +540,7 @@
 				0F066C791FA37BB900F713E9 /* WalkThroughPresenterTests.swift */,
 				0F066C811FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift */,
 				0F67D9CB1FACF66900A2A4F3 /* SocialLoginNetworkProviderFactoryTests.swift */,
+				0F25C17E1FB0CE5C00BD68A5 /* GoogleSocialNetworkProviderTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -698,13 +710,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FireBaseLoginRegisterTests/Pods-FireBaseLoginRegisterTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher-Core/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -764,7 +788,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher.default-Core/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -811,9 +835,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FireBaseLoginRegisterTests/Pods-FireBaseLoginRegisterTests-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -888,13 +915,17 @@
 				0F066C7D1FA37F1A00F713E9 /* StubWalkthroughNavigator.swift in Sources */,
 				0F67D9CA1FACF27900A2A4F3 /* MockNotificationCenter.swift in Sources */,
 				0F25C1771FAD039A00BD68A5 /* DummieFactory.swift in Sources */,
+				0F25C1811FB0CEF900BD68A5 /* MockGoogleSignIn.swift in Sources */,
 				0F066C8A1FA38AB700F713E9 /* MokUserSessionPersistor.swift in Sources */,
 				0F066C7A1FA37BB900F713E9 /* WalkThroughPresenterTests.swift in Sources */,
 				0F066C821FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift in Sources */,
+				0F25C17B1FAD0C5E00BD68A5 /* MockViewController.swift in Sources */,
 				0F066C7F1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift in Sources */,
 				0F066C861FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift in Sources */,
 				0F67D9CF1FACF6D400A2A4F3 /* MockSocialNetworkProvider.swift in Sources */,
 				0F066C881FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift in Sources */,
+				0F25C17F1FB0CE5C00BD68A5 /* GoogleSocialNetworkProviderTests.swift in Sources */,
+				0F25C1831FB0D63900BD68A5 /* FakeGoogleUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
