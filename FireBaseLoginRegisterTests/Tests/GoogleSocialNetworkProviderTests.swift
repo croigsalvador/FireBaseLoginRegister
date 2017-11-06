@@ -30,10 +30,12 @@ class GoogleSocialNetworkProviderTests: XCTestCase {
         sut = nil
     }
     
-    private func fakeGoogleUser() -> StubGoogleUser
+    private var fakeGoogleUser : FakeGoogleUser {
+        return FakeGoogleUser()
+    }
     
     func testConnect_ShouldCallPresentViewControllerMethod() {
-        sut.connectUser { (user, error) in }
+        sut.connectUser { (user, error) in}
         XCTAssertTrue(mockViewController.presentCalled)
     }
     
@@ -51,10 +53,12 @@ class GoogleSocialNetworkProviderTests: XCTestCase {
         }
     }
     
-    func testConnect_ShouldCallCompletionHandlerWithOutError() {
+    func testConnect_ShouldCallCompletionHandlerWithOutErrorAndReturningSocialRequestModel() {
         let expectation = self.expectation(description: "Expecting Google connect returns user")
-        sut.connectUser { (user, error) in
-            XCTAssertNil(error)
+        mockGDSignIn.googleUser = fakeGoogleUser
+        sut.connectUser { (request, error) in
+            XCTAssertNotNil(request)
+            XCTAssertTrue(self.fakeGoogleUser.authentication.accessToken == request?.token)
             expectation.fulfill()
         }
         waitForExpectations(timeout: 1.0) { (error) in

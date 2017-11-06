@@ -37,6 +37,10 @@ class GoogleLoginNetworkProvider: NSObject, SocialLoginNetworkProvider, GIDSignI
             completionHandler(nil,error)
             return
         }
+        guard let user = user else {
+            completionHandler(nil, nil)
+            return
+        }
         completionHandler(parse(user), nil)
     }
     

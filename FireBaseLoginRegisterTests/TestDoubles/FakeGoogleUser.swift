@@ -15,6 +15,10 @@ class FakeGoogleUser: GIDGoogleUser {
         return FakeGoogleAuth()
     }
     
+    override var profile: GIDProfileData! {
+        return FakeGoogleProfile()
+    }
+    
 }
 
 class FakeGoogleAuth: GIDAuthentication {
