@@ -42,13 +42,6 @@ struct SessionUserFirebaseProvider : SessionUserNetworkProvider{
         }
     }
     
-    func current() -> UserSession? {
-        if auth.currentUser != nil {
-            return UserSession()
-        }
-        return nil
-    }
-    
     func register(_ request: SocialRequestModel, _ completion: @escaping (RegisterResult) -> ()) {
         var credential = FacebookAuthProvider.credential(withAccessToken:request.token)
         if request.loginType == UserSessionType.google {
