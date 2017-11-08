@@ -27,7 +27,7 @@ class AppRootNavigator: RootNavigator {
     
     func launchAppFlow() {
         let initialViewController = UINavigationController.init(rootViewController: profileDependencies.profileViewController())
-        setupRootViewController(initialViewController)
+        setupRootViewController(initialViewController,.toBottom)
     }
     
     func installRootViewController(in window:UIWindow) {
@@ -41,12 +41,13 @@ class AppRootNavigator: RootNavigator {
     
     func  launchMainAuthentincation() {
         let initialViewController = UINavigationController.init(rootViewController: authenticationDependencies.mainAuthenticationhViewController())
-        setupRootViewController(initialViewController)
+        setupRootViewController(initialViewController,.toTop)
     }
     
-    fileprivate func setupRootViewController(_ viewController: UINavigationController) {
+    fileprivate func setupRootViewController(_ viewController: UINavigationController, _ direction: UIWindow.TransitionOptions.Direction) {
         currentNavigationController = viewController
-        window.setRootViewController(viewController)
+        let transition = UIWindow.TransitionOptions.init(direction:direction, style: .linear)
+        window.setRootViewController(viewController, options: transition)
     }
     
     fileprivate var isLogged: Bool {
