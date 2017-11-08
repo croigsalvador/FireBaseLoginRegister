@@ -17,14 +17,15 @@ class FacebookLoginNetworkProvider: SocialLoginNetworkProvider{
     var view: UIViewController!
     fileprivate let loginManager: LoginManager
     fileprivate let graphConnection = GraphRequestConnection()
-    internal var completionHandler : (UserSession?, Error?) -> Void? = {(user, error) in ()}
+    internal var completionHandler : (SocialRequestModel?, Error?) -> Void? = {(request, error) in ()}
+
     
     init(manager: LoginManager, view:UIViewController) {
         self.loginManager = manager
         self.view = view
     }
     
-    func connectUser(with completion: @escaping (UserSession?, Error?) -> ()) {
+    func connectUser(with completion: @escaping (SocialRequestModel?, Error?) -> ()) {
         loginManager.logIn(readPermissions: [ReadPermission.publicProfile, ReadPermission.email], viewController: view) { (loginResult) in
             switch loginResult {
             case .failed(let error):
@@ -41,11 +42,8 @@ class FacebookLoginNetworkProvider: SocialLoginNetworkProvider{
                             completion(nil,nil)
                             return
                         }
-                        var dict = dictionary
-                        dict["token"] = accessToken.authenticationToken as AnyObject
-                        dict["loginType"] = UserSessionType.facebook.rawValue as AnyObject
-                        completion(UserSession.init(dictionary: dict), nil)
-                        
+                        let request = RequestSocialRequestModel.init(idToken: nil, token: accessToken.authenticationToken, name: dictionary["name"] as! String, email: dictionary["email"] as! String, loginType: UserSessionType.facebook)
+                        completion(request,nil)                        
                     case .failed(let error):
                         completion(nil,error)
                     }

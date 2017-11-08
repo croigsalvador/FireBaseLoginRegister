@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FacebookLogin
 import GoogleSignIn
+import Firebase
 
 class ProfileDependencies: Depedencies {
 
@@ -24,7 +25,7 @@ class ProfileDependencies: Depedencies {
     }
     
     private func sessionUserLogOut() -> SessionUserLogOutUseCase {
-        let sessionLogout = SessionUserLogOut.init(notificationCenter: NotificationCenter.default, networkFactory: SocialLogOutNetworProviderkFactory(fbProvider: FacebookLogoutNetworkProvider(manager: LoginManager()),googleProvider:GoogleLogoutNetworkProvider(manager: GIDSignIn.sharedInstance())),sessionPersistor:sessionPersistor(), sessionProvider:SessionLogoutNetworkProvider())
+        let sessionLogout = SessionUserLogOut.init(notificationCenter: NotificationCenter.default, networkFactory: SocialLogOutNetworProviderkFactory(fbProvider: FacebookLogoutNetworkProvider(manager: LoginManager()),googleProvider:GoogleLogoutNetworkProvider(manager: GIDSignIn.sharedInstance())),sessionPersistor:sessionPersistor(), sessionProvider:SessionLogoutNetworkProvider.init(auth: Auth.auth()))
         return sessionLogout
     }
     

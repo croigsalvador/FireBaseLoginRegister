@@ -12,7 +12,7 @@ import UIKit
 protocol SocialLoginNetworkProvider {
     var isLogged : Bool{get}
     var view: UIViewController! {get set}
-    var completionHandler : (UserSession?, Error?) -> Void?  {get set}
-    func connectUser(with completion: @escaping (UserSession?, Error?) -> ())
+    var completionHandler : (SocialRequestModel?, Error?) -> Void?  {get set}
+    func connectUser(with completion: @escaping (SocialRequestModel?, Error?) -> ())
 }
 

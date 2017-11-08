@@ -9,7 +9,7 @@
 import XCTest
 @testable import FireBaseLoginRegister
 
-class StubWalkthroughNavigator: WalkthroughNavigator {
+class StubWalkthroughNavigator: AuthenticationNavigator {
     
     var didOpenLogin = false
     var didOpenRegister = false
