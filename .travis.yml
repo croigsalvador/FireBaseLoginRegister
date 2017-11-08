@@ -3,10 +3,9 @@ osx_image: xcode9
 cache: cocoapods
 
 before_install:
-  - gem install xcpretty
   - gem install cocoapods
 
 install:
   - pod install
 script:
-    -  set -o pipefail && xcodebuild -workspace FireBaseLoginRegister.xcworkspace -scheme 'FireBaseLoginRegister' -destination "platform=iOS Simulator,name=iPhone 7,OS=10.3"  build test CODE_SIGN_IDENTITY=- | xcpretty -c
+  xcodebuild -workspace FireBaseLoginRegister.xcworkspace -scheme 'FireBaseLoginRegister' -destination "platform=iOS Simulator,name=iPhone 7,OS=10.3"  build test CODE_SIGN_IDENTITY=- | xcpretty -c
