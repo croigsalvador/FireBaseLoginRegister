@@ -12,20 +12,20 @@ import UIKit
 class AppRootNavigator: RootNavigator {
     
     var window: UIWindow!
-    let walkthroughDependencies: WalkthroughDependencies
+    let authenticationDependencies: AuthenticationDependencies
     let profileDependencies: ProfileDependencies
     fileprivate let sessionPersistor: UserSessionPersistorProtocol
     
-    init(_ walkthroughDependencies: WalkthroughDependencies,_ profileDependencies: ProfileDependencies) {
-        self.walkthroughDependencies = walkthroughDependencies
+    init(_ authenticationDependencies: AuthenticationDependencies,_ profileDependencies: ProfileDependencies) {
+        self.authenticationDependencies = authenticationDependencies
         self.profileDependencies = profileDependencies
         self.sessionPersistor = profileDependencies.sessionPersistor()
         super.init()
-        self.walkthroughDependencies.navigator = self
+        self.authenticationDependencies.navigator = self
         self.profileDependencies.navigator = self
     }
     
-    func appRootViewController() {
+    func launchAppFlow() {
         let initialViewController = UINavigationController.init(rootViewController: profileDependencies.profileViewController())
         setupRootViewController(initialViewController)
     }
@@ -33,20 +33,20 @@ class AppRootNavigator: RootNavigator {
     func installRootViewController(in window:UIWindow) {
         self.window = window
         if isLogged {
-            appRootViewController()
+            launchAppFlow()
         } else {
-            walkthroughViewController()
+            launchMainAuthentincation()
         }
     }
     
-    func  walkthroughViewController() {
-        let initialViewController = UINavigationController.init(rootViewController: walkthroughDependencies.walkThroughViewController())
+    func  launchMainAuthentincation() {
+        let initialViewController = UINavigationController.init(rootViewController: authenticationDependencies.mainAuthenticationhViewController())
         setupRootViewController(initialViewController)
     }
     
     fileprivate func setupRootViewController(_ viewController: UINavigationController) {
         currentNavigationController = viewController
-        window.rootViewController = viewController
+        window.setRootViewController(viewController)
     }
     
     fileprivate var isLogged: Bool {

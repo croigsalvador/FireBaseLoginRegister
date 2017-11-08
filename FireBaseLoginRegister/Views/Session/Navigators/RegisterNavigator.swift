@@ -14,6 +14,6 @@ protocol RegisterNavigator {
 
 extension AppRootNavigator: RegisterNavigator {
     func openMainApp() {
-        appRootViewController()
+        launchAppFlow()
     }
 }

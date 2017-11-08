@@ -1,5 +1,5 @@
 //
-//  WalkthroughDependencies.swift
+//  AuthenticationDependencies.swift
 //  FireBaseLoginRegister
 //
 //  Created by Carlos Roig on 3/10/17.
@@ -11,13 +11,13 @@ import Firebase
 import FacebookLogin
 import GoogleSignIn
 
-class WalkthroughDependencies : Depedencies {
+class AuthenticationDependencies : Depedencies {
     
     var navigator: AppRootNavigator!
     
-    func walkThroughViewController() -> WalkthroughViewController {
-        let walkViewController = viewController(for: "WalkthroughViewController") as! WalkthroughViewController
-        let presenter = WalkThroughPresenter(navigator:navigator, socialSession:socialSession(view:walkViewController))
+    func mainAuthenticationhViewController() -> MainAuthenticationhViewController {
+        let walkViewController = viewController(for: "MainAuthenticationhViewController") as! MainAuthenticationhViewController
+        let presenter = MainAuthenticationPresenter(navigator:navigator, socialSession:socialSession(view:walkViewController))
         walkViewController.presenter = presenter
         
         return walkViewController

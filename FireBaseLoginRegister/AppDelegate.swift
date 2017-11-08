@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func installRootNavigator() {
-        navigator = AppRootNavigator(WalkthroughDependencies(),ProfileDependencies())
+        navigator = AppRootNavigator(AuthenticationDependencies(),ProfileDependencies())
         navigator.installRootViewController(in: window!)
         window?.makeKeyAndVisible()
     }
@@ -57,6 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: LogoutListenServiceDelegate {
     func userDidLogout() {
-        navigator.walkthroughViewController()
+        navigator.launchMainAuthentincation()
     }
 }

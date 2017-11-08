@@ -8,9 +8,9 @@
 
 import UIKit
 
-class WalkthroughViewController: UIViewController {
+class MainAuthenticationhViewController: UIViewController {
 
-    var presenter: WalkThroughPresenter!
+    var presenter: MainAuthenticationPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
