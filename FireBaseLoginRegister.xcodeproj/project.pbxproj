@@ -28,7 +28,6 @@
 		0F2CEC941FA248F700A1A942 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CEC931FA248F700A1A942 /* ViewController.swift */; };
 		0F2CEC991FA248F700A1A942 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F2CEC981FA248F700A1A942 /* Assets.xcassets */; };
 		0F2CEC9C1FA248F700A1A942 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F2CEC9A1FA248F700A1A942 /* LaunchScreen.storyboard */; };
-		0F2CECB21FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2CECB11FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift */; };
 		0F3BA5591FA3317C00297004 /* SessionUserFirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5461FA3317C00297004 /* SessionUserFirebaseProvider.swift */; };
 		0F3BA55A1FA3317C00297004 /* SocialNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5471FA3317C00297004 /* SocialNetworkProvider.swift */; };
 		0F3BA55B1FA3317C00297004 /* FacebookLogoutNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3BA5481FA3317C00297004 /* FacebookLogoutNetworkProvider.swift */; };
@@ -131,7 +130,6 @@
 		0F2CECA21FA248F700A1A942 /* FireBaseLoginRegisterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireBaseLoginRegisterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F2CECA81FA248F700A1A942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F2CECAD1FA248F700A1A942 /* FireBaseLoginRegisterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FireBaseLoginRegisterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F2CECB11FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseLoginRegisterUITests.swift; sourceTree = "<group>"; };
 		0F2CECB31FA248F700A1A942 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F3BA5461FA3317C00297004 /* SessionUserFirebaseProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionUserFirebaseProvider.swift; sourceTree = "<group>"; };
 		0F3BA5471FA3317C00297004 /* SocialNetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialNetworkProvider.swift; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 		0F2CECB01FA248F700A1A942 /* FireBaseLoginRegisterUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0F2CECB11FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift */,
 				0F2CECB31FA248F700A1A942 /* Info.plist */,
 			);
 			path = FireBaseLoginRegisterUITests;
@@ -945,7 +942,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F2CECB21FA248F700A1A942 /* FireBaseLoginRegisterUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
