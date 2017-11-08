@@ -1,11 +1,3 @@
 language: swift
-osx_image: xcode9
-cache: cocoapods
-
-before_install:
-  - gem install cocoapods
-
-install:
-  - pod install
-script:
-  - xcodebuild -workspace FireBaseLoginRegister.xcworkspace -scheme 'FireBaseLoginRegister' -destination "platform=iOS Simulator,name=iPhone 7,OS=10.3"  build test CODE_SIGN_IDENTITY=-
+xcode_project: FireBaseLoginRegister.xcodeproj # path to your xcodeproj folder
+xcode_scheme: FireBaseLoginRegisterTests
