@@ -7,5 +7,5 @@ before_install:
 install:
   - pod install
 
- script: 
- 	- set -o pipefail && xcodebuild test -workspace FireBaseLoginRegister.xcworkspace -scheme FireBaseLoginRegister -sdk iphonesimulator10.3 ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 7,OS=11' | xcpretty
+script: 
+ - set -o pipefail && xcodebuild test -workspace FireBaseLoginRegister.xcworkspace -scheme FireBaseLoginRegister -sdk iphonesimulator10.3 ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3' | xcpretty
