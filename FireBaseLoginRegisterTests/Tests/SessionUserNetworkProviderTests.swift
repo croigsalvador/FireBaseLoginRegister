@@ -133,4 +133,51 @@ class SessionUserNetworkProviderTests: XCTestCase {
         waitForExpectation()
     }
     
+    func testRegister_withSocialRequestForGoogleShouldReturnError() {
+        let socialRequest = RequestSocialRequestModel.init(idToken:"", token: "Social request token", name: "User", email: "email@test.com", loginType: .google)
+        mockAuth.error =  error
+        sut.register(socialRequest) { (result) in
+            self.checkErrorIn(result)
+        }
+        waitForExpectation()
+    }
+    
+    func testRegister_withSocialRequestForFacebookShouldReturnError() {
+        let socialRequest = RequestSocialRequestModel.init(idToken:"", token: "Social request token", name: "User", email: "email@test.com", loginType: .facebook)
+        mockAuth.error =  error
+        sut.register(socialRequest) { (result) in
+            self.checkErrorIn(result)
+        }
+        waitForExpectation()
+    }
+    
+    func testRegister_withSocialRequestShouldReturnErrorFromUpdatingUserInServer() {
+        let socialRequest = RequestSocialRequestModel.init(idToken:"", token: "Social request token", name: "User", email: "email@test.com", loginType: .facebook)
+
+        mockAuth.user = fakeUser
+        stubReference.error = error
+        sut.register(socialRequest) { (result) in
+            self.checkErrorIn(result)
+        }
+        waitForExpectation()
+    }
+    
+    func testRegister_withSocialRequestShouldUserSessionCreatedWithSameEmail() {
+        let socialRequest = RequestSocialRequestModel.init(idToken:"", token: "Social request token", name: "User", email: "email@test.com", loginType: .facebook)
+
+        mockAuth.user = fakeUser
+        sut.register(socialRequest) { (result) in
+            switch result {
+            case let .success(user):
+                XCTAssertTrue(user?.email == socialRequest.email)
+                XCTAssertTrue(user?.token == socialRequest.token)
+                break
+            case .failure(_):
+                break
+            }
+            self.expectation.fulfill()
+        }
+        waitForExpectation()
+    }
+    
 }
