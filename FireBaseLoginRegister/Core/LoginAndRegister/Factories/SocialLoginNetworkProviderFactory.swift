@@ -19,31 +19,27 @@ enum SocialType {
 
 class SocialLoginNetworkProviderFactory {
     
-    fileprivate let view: UIViewController
+    fileprivate let facebookProvider: SocialLoginNetworkProvider
+    fileprivate let googleProvider: SocialLoginNetworkProvider
     
-    init(view: UIViewController) {
-        self.view = view
+    init(_ facebookProvider:SocialLoginNetworkProvider, _ googleProvider: SocialLoginNetworkProvider) {
+        self.facebookProvider = facebookProvider
+        self.googleProvider = googleProvider
     }
     
-    func connect(_ social: SocialType, _ completion:@escaping (UserSession?, Error?)->()) {
+    func connect(_ social: SocialType, _ completion:@escaping (SocialRequestModel?, Error?)->()) {
         switch social {
         case .facebook:
-            facebookLogin().connectUser(with: completion)
+            facebookProvider.connectUser(with: completion)
             break
         case .google:
-            googleLogin().connectUser(with: completion)
+            googleProvider.connectUser(with: completion)
             break
         case .twitter:
             break
         }
     }
     
-    private func facebookLogin() -> SocialLoginNetworkProvider {
-            return  FacebookLoginNetworkProvider(manager:LoginManager(), view:view)
-    }
     
-    private func googleLogin() -> SocialLoginNetworkProvider {
-       return GoogleLoginNetworkProvider(manager:GIDSignIn.sharedInstance(), view:view)
-    }
     
 }

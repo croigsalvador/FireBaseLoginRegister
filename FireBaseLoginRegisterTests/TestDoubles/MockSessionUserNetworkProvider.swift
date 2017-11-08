@@ -11,8 +11,28 @@ import Foundation
 
 class MockSessionUserNetworkProvider :  SessionUserNetworkProvider {
     
+    var error: Error?
+    var userSession: UserSession = UserSession.init(id:"123", name: "Test", email: "session@sadasd.com")
+    var called = false
+
+    func register(_ registerParams: RegisterUserBasicParams, _ completion: @escaping (RegisterResult) -> ()) {
+        result(completion)
+    }
     
-    override func register(userSession: UserSession, with success: @escaping (UserSession?) -> ()) {
-        
+    func register(_ request: SocialRequestModel, _ completion: @escaping (RegisterResult) -> ()) {
+        result(completion)
+    }
+    
+    func loginUser(_ loginParams: LoginUserParams, _ completion: @escaping (RegisterResult) -> ()) {
+        result(completion)
+    }
+    
+    private func result(_ completion: @escaping (RegisterResult) -> ()) {
+        called = true
+        if let error = error {
+            completion(RegisterResult.failure(error))
+        } else {
+            completion(RegisterResult.success(userSession))
+        }
     }
 }

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class WalkThroughPresenter: Presenter {
+class MainAuthenticationPresenter: Presenter {
     
-    fileprivate let navigator: WalkthroughNavigator
+    fileprivate let navigator: AuthenticationNavigator
     fileprivate let socialSession: SocialSessionUserLoginUseCase
     
-    init(navigator: WalkthroughNavigator, socialSession: SocialSessionUserLoginUseCase) {
+    init(navigator: AuthenticationNavigator, socialSession: SocialSessionUserLoginUseCase) {
         self.navigator = navigator
         self.socialSession = socialSession
     }

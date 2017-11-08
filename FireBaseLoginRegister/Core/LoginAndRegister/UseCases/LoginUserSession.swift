@@ -11,21 +11,27 @@ import Foundation
 class LoginUserSession {
     
     fileprivate let provider: SessionUserNetworkProvider
-    fileprivate let persistor: UserSessionPersistor
+    fileprivate let persistor: UserSessionPersistorProtocol
     
-    init(provider: SessionUserNetworkProvider, persistor: UserSessionPersistor) {
+    init(provider: SessionUserNetworkProvider, persistor: UserSessionPersistorProtocol) {
         self.provider = provider
         self.persistor = persistor
     }
     
     func login(email: String, password: String, success:@escaping (Bool)->()) {
-        provider.loginUser(with: email, password: password) { (user) in
-            guard let user = user else {
+        let params = LoginUserParams(email:email, password:password)
+        provider.loginUser(params) { (result) in
+            switch result {
+            case let .success(userSession):
+                guard let user = userSession else {
+                    success(false)
+                    return
+                }
+                self.persistor.save(user, completion: success)
+            case .failure(_):
                 success(false)
-                return
             }
-            self.persistor.save(user, completion: success)
         }
     }
-
+    
 }

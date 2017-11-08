@@ -12,7 +12,7 @@ import UIKit
 protocol Depedencies {
     func storyboard(_ name: String) -> UIStoryboard
     func viewController(_ storyBoard:String,_ name:String) -> UIViewController
-    func sessionPersistor() -> UserSessionPersistor
+    func sessionPersistor() -> UserSessionPersistorProtocol
 }
 
 extension Depedencies {
@@ -25,7 +25,7 @@ extension Depedencies {
     }
     
 
-    func sessionPersistor() -> UserSessionPersistor {
+    func sessionPersistor() -> UserSessionPersistorProtocol {
         return UserSessionPersistor(UserDefaultsStorageCoordinator(UserDefaults.standard, modelKey: "UserSession", serializer:ItemSerializer()))
     }
 }

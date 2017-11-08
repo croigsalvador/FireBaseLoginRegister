@@ -10,11 +10,11 @@ import Foundation
 
 protocol SocialSessionUserLoginUseCase {
     var notificationCenter: NotificationCenter? {get}
-    func connect(_ social: SocialType, with completion:@escaping (Bool)->())
+    func connect(_ social: SocialType,_ success:@escaping (Bool)->()) 
 }
 
 extension SocialSessionUserLoginUseCase {
-    func userDidLogin(_ user: UserSession){
+    func userDidLogin(_ user:UserSession){
         notificationCenter?.post(name:.UserDidLoginNotification, object: nil, userInfo: ["UserSession":user])
     }
 }

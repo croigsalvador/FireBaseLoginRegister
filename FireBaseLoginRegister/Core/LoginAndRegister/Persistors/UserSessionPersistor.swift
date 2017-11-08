@@ -8,7 +8,13 @@
 
 import Foundation
 
-class UserSessionPersistor {
+protocol UserSessionPersistorProtocol {
+    func save(_ user: UserSession, completion:@escaping (Bool) -> Void)
+    func removeUser()
+    func getUser() -> UserSession?
+}
+
+struct UserSessionPersistor: UserSessionPersistorProtocol {
     
     private let storage : StorageCoordinator
    

@@ -10,9 +10,9 @@ import XCTest
 import Firebase
 @testable import FireBaseLoginRegister
 
-class WalkThroughPresenterTests: XCTestCase {
+class MainAuthenticationPresenterTests: XCTestCase {
     
-    fileprivate var sut: WalkThroughPresenter!
+    fileprivate var sut: MainAuthenticationPresenter!
     fileprivate var stubNavigator: StubWalkthroughNavigator!
     fileprivate var stubSocialSession: StubSocialSessionUserLoginUseCase!
     
@@ -20,7 +20,7 @@ class WalkThroughPresenterTests: XCTestCase {
         super.setUp()
         stubNavigator = StubWalkthroughNavigator()
         stubSocialSession = StubSocialSessionUserLoginUseCase()
-        sut = WalkThroughPresenter.init(navigator:stubNavigator, socialSession:stubSocialSession)
+        sut = MainAuthenticationPresenter.init(navigator:stubNavigator, socialSession:stubSocialSession)
     }
     
     func testGoogle_shouldCallSocialConnectConnectionMethod(){

@@ -13,11 +13,11 @@ import FacebookLogin
 class SessionUserLogOut: SessionUserLogOutUseCase {
     
     private let networkFactory: SocialLogOutNetworProviderkFactory
-    private let sessionPersistor: UserSessionPersistor
+    private let sessionPersistor: UserSessionPersistorProtocol
     internal var notificationCenter: NotificationCenter?
     private let sessionProvider: SessionLogoutNetworkProvider
     
-    init(notificationCenter:NotificationCenter, networkFactory: SocialLogOutNetworProviderkFactory, sessionPersistor: UserSessionPersistor, sessionProvider: SessionLogoutNetworkProvider) {
+    init(notificationCenter:NotificationCenter, networkFactory: SocialLogOutNetworProviderkFactory, sessionPersistor: UserSessionPersistorProtocol, sessionProvider: SessionLogoutNetworkProvider) {
         self.networkFactory = networkFactory
         self.sessionPersistor = sessionPersistor
         self.notificationCenter = notificationCenter

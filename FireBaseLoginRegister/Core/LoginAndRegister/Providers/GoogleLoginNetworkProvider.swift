@@ -15,14 +15,14 @@ class GoogleLoginNetworkProvider: NSObject, SocialLoginNetworkProvider, GIDSignI
     
     var view: UIViewController!
     fileprivate let manager: GIDSignIn
-    internal var completionHandler : (UserSession?, Error?) -> Void? = {(user, error) in ()}
+    internal var completionHandler : (SocialRequestModel?, Error?) -> Void? = {(request, error) in ()}
     
     init(manager: GIDSignIn, view:UIViewController) {
         self.manager = manager
         self.view = view
     }
     
-    func connectUser(with completion: @escaping (UserSession?, Error?) -> ()) {
+    func connectUser(with completion: @escaping (SocialRequestModel?, Error?) -> ()) {
         manager.clientID = FirebaseApp.app()?.options.clientID
         manager.delegate = self
         manager.uiDelegate = self
@@ -37,21 +37,18 @@ class GoogleLoginNetworkProvider: NSObject, SocialLoginNetworkProvider, GIDSignI
             completionHandler(nil,error)
             return
         }
-        
+        guard let user = user else {
+            completionHandler(nil, nil)
+            return
+        }
         completionHandler(parse(user), nil)
-        
     }
     
-    func parse(_ googleUser: GIDGoogleUser) -> UserSession? {
+    func parse(_ googleUser: GIDGoogleUser) -> SocialRequestModel? {
         guard let authentication = googleUser.authentication else { return nil }
-        let userDict = ["id": googleUser.userID,
-                        "token": googleUser.authentication.accessToken,
-                        "idToken":authentication.idToken,
-                        "name": googleUser.profile.name,
-                        "email": googleUser.profile.email,
-                        "loginType": UserSessionType.google.rawValue]
-        return UserSession.init(dictionary: userDict as [String : AnyObject])
+        let request = RequestSocialRequestModel(idToken: authentication.idToken, token: googleUser.authentication.accessToken, name: googleUser.profile.name, email: googleUser.profile.email, loginType: UserSessionType.google)
         
+        return request
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
@@ -63,6 +60,6 @@ class GoogleLoginNetworkProvider: NSObject, SocialLoginNetworkProvider, GIDSignI
     }
     
     var isLogged: Bool {
-        return false
+        return manager.currentUser != nil
     }
 }
