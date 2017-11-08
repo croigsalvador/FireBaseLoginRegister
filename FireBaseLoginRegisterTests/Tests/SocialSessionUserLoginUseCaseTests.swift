@@ -9,14 +9,13 @@
 import XCTest
 @testable import FireBaseLoginRegister
 
-class SocialSessionUserLoginUseCaseTests: XCTestCase {
+class SocialSessionUserLoginUseCaseTests: BaseExpectationTest {
     
     var sut: SocialSessionUserLoginUseCase!
     var mockNotificationCenter: MockNotificationCenter!
     var stubSocialProviderFactory: StubSocialLoginNetworkProviderFactory!
     var mockSessionUserProvider: MockSessionUserNetworkProvider!
     var mockSessionPersistor: MockUserSessionPersistor!
-    
     
     override func setUp() {
         super.setUp()
@@ -27,7 +26,11 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
         mockSessionUserProvider = MockSessionUserNetworkProvider()
         mockSessionPersistor = MockUserSessionPersistor()
         
-        sut = SocialSessionUserLogin.init(notificationCenter:mockNotificationCenter, socialProviderFactory: stubSocialProviderFactory, sessionProvider:mockSessionUserProvider, sessionPersistor: mockSessionPersistor)
+        sut = SocialSessionUserLogin.init(notificationCenter: mockNotificationCenter,
+                                          socialProviderFactory: stubSocialProviderFactory,
+                                          sessionProvider: mockSessionUserProvider,
+                                          sessionPersistor: mockSessionPersistor)
+        expectation  = self.expectation(description: "Expecting Google connect returns user")
     }
     
     override func tearDown() {
@@ -40,62 +43,39 @@ class SocialSessionUserLoginUseCaseTests: XCTestCase {
     }
     
     func testConnect_ShouldCallFactoryConnectMethodAndReturnFalseInSuccess() {
-        let expectation = self.expectation(description: "Expecting factory connect return")
         stubSocialProviderFactory.error =  NSError(domain:"", code:4, userInfo:nil)
         sut.connect(.facebook) { (success) in
             XCTAssert(!success)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        
-        waitForExpectations(timeout: 0.5) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
     }
     
     func testConnect_ShouldCallSessionNetworkProviderRegisterMethodAndReturnFalseInSuccess() {
-        let expectation = self.expectation(description: "Expecting factory connect return")
         mockSessionUserProvider.error = NSError(domain:"", code:4, userInfo:nil)
         sut.connect(.facebook) { (success) in
             XCTAssert(!success)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
     }
     
     func testConnect_ShouldCallSessionPersitorAndReturnFalseInSuccessClousure(){
-        let expectation = self.expectation(description: "Expecting factory connect return")
         sut.connect(.facebook) { (success) in
             XCTAssert(!success)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
+
     }
     
     func testConnect_ShouldCallSessionPersitorAndCallNotificationUserDidLoginMethod() {
-        let expectation = self.expectation(description: "Expecting factory connect return")
         mockSessionPersistor.success = true
         sut.connect(.facebook) { (success) in
             XCTAssertTrue(self.mockNotificationCenter.postCalled > 0)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
     }
     
 }

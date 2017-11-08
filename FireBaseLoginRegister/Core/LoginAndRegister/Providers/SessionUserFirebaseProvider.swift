@@ -11,11 +11,10 @@ import Firebase
 import FirebaseAuth
 
 struct SessionUserFirebaseProvider : SessionUserNetworkProvider{
-    
     fileprivate let auth: Auth
     fileprivate let database: Database
     
-    init(_ database: Database,_ auth: Auth ) {
+    init(_ database:Database,_ auth:Auth) {
         self.database = database
         self.auth = auth
     }
@@ -32,7 +31,7 @@ struct SessionUserFirebaseProvider : SessionUserNetworkProvider{
         }
     }
     
-    func loginUser(_ loginParams: LoginUserParams, _ completion: @escaping (RegisterResult) -> ()) {
+    func loginUser(_ loginParams: LoginUserParams, _ completion: @escaping (RegisterResult) -> Void) {
         auth.signIn(withEmail: loginParams.email, password: loginParams.password) { (user, error) in
             guard let user = user else {
                 completion(RegisterResult.failure(error!))

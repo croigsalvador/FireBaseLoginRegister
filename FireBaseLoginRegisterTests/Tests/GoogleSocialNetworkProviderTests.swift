@@ -9,7 +9,7 @@
 import XCTest
 @testable import FireBaseLoginRegister
 
-class GoogleSocialNetworkProviderTests: XCTestCase {
+class GoogleSocialNetworkProviderTests: BaseExpectationTest {
     
     var sut: GoogleLoginNetworkProvider!
     var mockViewController: MockViewController!
@@ -21,6 +21,7 @@ class GoogleSocialNetworkProviderTests: XCTestCase {
         mockViewController = MockViewController()
         mockGDSignIn = MockGoogleSignIn()
         sut = GoogleLoginNetworkProvider(manager: mockGDSignIn, view: mockViewController)
+        expectation  = self.expectation(description: "Expecting Google connect returns user")
     }
     
     override func tearDown() {
@@ -35,37 +36,27 @@ class GoogleSocialNetworkProviderTests: XCTestCase {
     }
     
     func testConnect_ShouldCallPresentViewControllerMethod() {
-        sut.connectUser { (user, error) in}
+        sut.connectUser { (_, _) in}
         XCTAssertTrue(mockViewController.presentCalled)
     }
     
     func testConnect_ShouldCallCompletionHandlerWithError() {
-        let expectation = self.expectation(description: "Expecting Google connect returns user")
         mockGDSignIn.error =  NSError(domain:"", code:4, userInfo:nil)
-        sut.connectUser { (user, error) in
+        sut.connectUser { (_, error) in
             XCTAssertNotNil(error)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
     }
     
     func testConnect_ShouldCallCompletionHandlerWithOutErrorAndReturningSocialRequestModel() {
-        let expectation = self.expectation(description: "Expecting Google connect returns user")
         mockGDSignIn.googleUser = fakeGoogleUser
-        sut.connectUser { (request, error) in
+        sut.connectUser { (request,_) in
             XCTAssertNotNil(request)
             XCTAssertTrue(self.fakeGoogleUser.authentication.accessToken == request?.token)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
     }
 
 

@@ -9,7 +9,7 @@
 import XCTest
 @testable import FireBaseLoginRegister
 
-class SessionUserNetworkProviderTests: XCTestCase {
+class SessionUserNetworkProviderTests: BaseExpectationTest {
     
     var sut: SessionUserNetworkProvider!
     var mockDatabase: MockFirebaseDatabase!
@@ -20,16 +20,15 @@ class SessionUserNetworkProviderTests: XCTestCase {
     let loginParams = LoginUserParams(email:"email@gmail.com", password:"12345")
     let registerParams = RegisterUserBasicParams(name:"Name",email:"email@gmail.com", password:"12345")
     let error = NSError(domain:"", code:4, userInfo:nil)
-    var expectation: XCTestExpectation!
     
     override func setUp() {
         super.setUp()
         mockDatabase = MockFirebaseDatabase()
         mockDatabase.stubReference = stubReference
         mockAuth = MockFirebaseAuth.auth()
-        sut = SessionUserFirebaseProvider.init(mockDatabase,mockAuth)
+        sut = SessionUserFirebaseProvider.init(mockDatabase, mockAuth)
         expectation  = self.expectation(description: "Expecting Google connect returns user")
-        
+
     }
     
     override func tearDown() {
@@ -41,15 +40,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut = nil
  
     }
-    
-    private func waitForExpectation() {
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
-    }
-    
+
     private func checkErrorIn(_ result: RegisterResult) {
         switch result {
         case .success(_):
@@ -61,7 +52,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
     }
     
     private func checkSuccessIn(_ result: RegisterResult,_ params:RegisterUserBasicParams) {
-        switch result {
+        switch result{
         case let .success(user):
             XCTAssertTrue(user?.name == params.name)
             XCTAssertTrue(user?.email == params.email)
@@ -77,7 +68,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.register(registerParams) { (result) in
             self.checkErrorIn(result)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testRegister_withRegisterParamsShouldReturnErrorFromUpdatingUser() {
@@ -86,7 +77,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.register(registerParams) { (result) in
             self.checkErrorIn(result)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
         
     }
     
@@ -97,7 +88,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.register(params) { (result) in
             self.checkSuccessIn(result, params)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testLogin_withLoginParamsShouldReturnError() {
@@ -105,7 +96,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.loginUser(loginParams) { (result) in
            self.checkErrorIn(result)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testLogin_withLoginParamsShouldReturnErrorFromUpdatingUserInServer() {
@@ -114,7 +105,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.loginUser(loginParams) { (result) in
            self.checkErrorIn(result)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testLogin_withLoginParamsShouldUserSessionCreatedWithSameEmail() {
@@ -130,7 +121,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
             }
             self.expectation.fulfill()
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testRegister_withSocialRequestForGoogleShouldReturnError() {
@@ -139,7 +130,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.register(socialRequest) { (result) in
             self.checkErrorIn(result)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testRegister_withSocialRequestForFacebookShouldReturnError() {
@@ -148,7 +139,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.register(socialRequest) { (result) in
             self.checkErrorIn(result)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testRegister_withSocialRequestShouldReturnErrorFromUpdatingUserInServer() {
@@ -159,7 +150,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
         sut.register(socialRequest) { (result) in
             self.checkErrorIn(result)
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
     func testRegister_withSocialRequestShouldUserSessionCreatedWithSameEmail() {
@@ -177,7 +168,7 @@ class SessionUserNetworkProviderTests: XCTestCase {
             }
             self.expectation.fulfill()
         }
-        waitForExpectation()
+        waitForExpectation(with: 1.0)
     }
     
 }

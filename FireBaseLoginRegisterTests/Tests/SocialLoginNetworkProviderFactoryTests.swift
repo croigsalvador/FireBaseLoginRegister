@@ -9,7 +9,7 @@
 import XCTest
 @testable import FireBaseLoginRegister
 
-class SocialLoginNetworkProviderFactoryTests: XCTestCase {
+class SocialLoginNetworkProviderFactoryTests: BaseExpectationTest {
     
     var mockFacebookSocialProvider: MockSocialNetworkProvider!
     var mockGoogleSocialProvider: MockSocialNetworkProvider!
@@ -21,6 +21,7 @@ class SocialLoginNetworkProviderFactoryTests: XCTestCase {
         mockGoogleSocialProvider = MockSocialNetworkProvider()
         mockGoogleSocialProvider.isFacebook = false
         sut = SocialLoginNetworkProviderFactory(mockFacebookSocialProvider,mockGoogleSocialProvider)
+        expectation  = self.expectation(description: "Expecting Google connect returns user")
     }
     
     override func tearDown() {
@@ -31,29 +32,20 @@ class SocialLoginNetworkProviderFactoryTests: XCTestCase {
     }
     
     func testConnect_ShouldCallProviderConnectMethod() {
-        let expectation = self.expectation(description: "Expecting factory connect return")
+        
         sut.connect(.facebook) { (request, error) in
             XCTAssertTrue(self.mockFacebookSocialProvider.connectCalled)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
     }
     
     func testConnect_ShouldCallGoogleProviderConnectMethod() {
-        let expectation = self.expectation(description: "Expecting factory connect return")
         sut.connect(.google) { (request, error) in
             XCTAssertTrue(self.mockGoogleSocialProvider.connectCalled)
-            expectation.fulfill()
+            self.expectation.fulfill()
         }
-        waitForExpectations(timeout: 1.0) { (error) in
-            if error != nil {
-                print("error")
-            }
-        }
+        waitForExpectation(with: 1.0)
     }
     
 
