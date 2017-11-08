@@ -9,4 +9,4 @@ before_install:
 install:
   - pod install
 script:
-    -  set -o pipefail && xcodebuild -workspace FireBaseLoginRegister.xcworkspace -scheme 'FireBaseLoginRegister' -destination 'platform=iOS Simulator,name=iPhone 7' build test CODE_SIGN_IDENTITY=- | xcpretty -c
+    -  set -o pipefail && xcodebuild -workspace FireBaseLoginRegister.xcworkspace -scheme 'FireBaseLoginRegister' -destination "platform=iOS Simulator,name=iPhone 7,OS=10.3"  build test CODE_SIGN_IDENTITY=- | xcpretty -c
