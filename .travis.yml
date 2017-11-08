@@ -1,3 +1,5 @@
 language: swift
-xcode_project: FireBaseLoginRegister.xcodeproj # path to your xcodeproj folder
+cache: cocoapods
+osx_image:xcode9
+xcode_workspace: FireBaseLoginRegister.workspace # path to your xcodeproj folder
 xcode_scheme: FireBaseLoginRegisterTests
