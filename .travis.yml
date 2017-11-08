@@ -1,6 +1,6 @@
 language: objective-c
 osx_image: xcode9
 cache: cocoapods
-xcode_workspace: FireBaseLoginRegister.workspace # path to your xcodeproj folder
+xcode_workspace: FireBaseLoginRegister.xcworkspace # path to your xcodeproj folder
 xcode_scheme: FireBaseLoginRegisterTests
 
