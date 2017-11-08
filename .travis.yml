@@ -5,8 +5,5 @@ cache: cocoapods
 before_install:
   - gem install cocoapods
 
-install:
-  - pod install
-
-script: 
- - set -o pipefail && xcodebuild test -workspace FireBaseLoginRegister.xcworkspace -scheme FireBaseLoginRegister -sdk iphonesimulator10.3 ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3' | xcpretty
+script:
+    - xcodebuild clean test -workspace FireBaseLoginRegister.xcworkspace MyApp.xcodeproj -scheme FireBaseLoginRegister -destination "platform=iOS Simulator,name=iPhone 7,OS=10.3" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
