@@ -36,8 +36,11 @@ class GoogleSocialNetworkProviderTests: BaseExpectationTest {
     }
     
     func testConnect_ShouldCallPresentViewControllerMethod() {
-        sut.connectUser { (_, _) in}
-        XCTAssertTrue(mockViewController.presentCalled)
+        sut.connectUser { (user,error) in
+            XCTAssertTrue(mockViewController.presentCalled)
+            self.expectation.fulfill()
+        }
+        waitForExpectation(with: 1.0)
     }
     
     func testConnect_ShouldCallCompletionHandlerWithError() {
