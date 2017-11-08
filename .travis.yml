@@ -3,3 +3,8 @@ cache: cocoapods
 osx_image:xcode9
 xcode_workspace: FireBaseLoginRegister.workspace # path to your xcodeproj folder
 xcode_scheme: FireBaseLoginRegisterTests
+
+before_install:
+  - gem install cocoapods
+install:
+  - pod install
