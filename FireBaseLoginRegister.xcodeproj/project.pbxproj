@@ -75,6 +75,10 @@
 		0F67D9CA1FACF27900A2A4F3 /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F67D9C91FACF27900A2A4F3 /* MockNotificationCenter.swift */; };
 		0F67D9CC1FACF66900A2A4F3 /* SocialLoginNetworkProviderFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F67D9CB1FACF66900A2A4F3 /* SocialLoginNetworkProviderFactoryTests.swift */; };
 		0F67D9CF1FACF6D400A2A4F3 /* MockSocialNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F67D9CE1FACF6D400A2A4F3 /* MockSocialNetworkProvider.swift */; };
+		0F713E421FB0E41D0081C6F1 /* SessionUserNetworkProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F713E411FB0E41D0081C6F1 /* SessionUserNetworkProviderTests.swift */; };
+		0F713E441FB0E4530081C6F1 /* FirebaseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F713E431FB0E4530081C6F1 /* FirebaseKeys.swift */; };
+		0F713E481FB0E68D0081C6F1 /* MockFirebaseDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F713E471FB0E68D0081C6F1 /* MockFirebaseDatabase.swift */; };
+		0F713E4A1FB0E70E0081C6F1 /* MockFirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F713E491FB0E70E0081C6F1 /* MockFirebaseAuth.swift */; };
 		0F8BEE0C1FAC882900206403 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BEE0B1FAC882900206403 /* Result.swift */; };
 		0F8BEE0E1FAC886000206403 /* SessionUserNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BEE0D1FAC886000206403 /* SessionUserNetworkProvider.swift */; };
 		0F8BEE101FAC893600206403 /* BasicUserParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BEE0F1FAC893600206403 /* BasicUserParams.swift */; };
@@ -174,6 +178,10 @@
 		0F67D9C91FACF27900A2A4F3 /* MockNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationCenter.swift; sourceTree = "<group>"; };
 		0F67D9CB1FACF66900A2A4F3 /* SocialLoginNetworkProviderFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginNetworkProviderFactoryTests.swift; sourceTree = "<group>"; };
 		0F67D9CE1FACF6D400A2A4F3 /* MockSocialNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSocialNetworkProvider.swift; sourceTree = "<group>"; };
+		0F713E411FB0E41D0081C6F1 /* SessionUserNetworkProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserNetworkProviderTests.swift; sourceTree = "<group>"; };
+		0F713E431FB0E4530081C6F1 /* FirebaseKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseKeys.swift; sourceTree = "<group>"; };
+		0F713E471FB0E68D0081C6F1 /* MockFirebaseDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFirebaseDatabase.swift; sourceTree = "<group>"; };
+		0F713E491FB0E70E0081C6F1 /* MockFirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFirebaseAuth.swift; sourceTree = "<group>"; };
 		0F8BEE0B1FAC882900206403 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		0F8BEE0D1FAC886000206403 /* SessionUserNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserNetworkProvider.swift; sourceTree = "<group>"; };
 		0F8BEE0F1FAC893600206403 /* BasicUserParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicUserParams.swift; sourceTree = "<group>"; };
@@ -221,6 +229,7 @@
 				0F3BA5B91FA33A5900297004 /* Presenter.swift */,
 				0F3BA5BF1FA33AEF00297004 /* NotificationNames.swift */,
 				0F8BEE0B1FAC882900206403 /* Result.swift */,
+				0F713E431FB0E4530081C6F1 /* FirebaseKeys.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -247,6 +256,8 @@
 				0F25C17A1FAD0C5E00BD68A5 /* MockViewController.swift */,
 				0F25C1801FB0CEF900BD68A5 /* MockGoogleSignIn.swift */,
 				0F25C1821FB0D63900BD68A5 /* FakeGoogleUser.swift */,
+				0F713E471FB0E68D0081C6F1 /* MockFirebaseDatabase.swift */,
+				0F713E491FB0E70E0081C6F1 /* MockFirebaseAuth.swift */,
 			);
 			path = TestDoubles;
 			sourceTree = "<group>";
@@ -313,7 +324,6 @@
 				0F066C761FA3466E00F713E9 /* Services */,
 				0F3BA5BE1FA33A7200297004 /* TextValidator */,
 				0F066C751FA345D000F713E9 /* Commons */,
-				0F3BA5B71FA339EF00297004 /* ImagePicker */,
 				0F3BA59A1FA3333500297004 /* Navigators */,
 				0F3BA58D1FA3330900297004 /* Storages */,
 				0F3BA5801FA332DC00297004 /* Dependencies */,
@@ -519,13 +529,6 @@
 			path = Presenters;
 			sourceTree = "<group>";
 		};
-		0F3BA5B71FA339EF00297004 /* ImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ImagePicker;
-			sourceTree = "<group>";
-		};
 		0F3BA5BE1FA33A7200297004 /* TextValidator */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,6 +544,7 @@
 				0F066C811FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift */,
 				0F67D9CB1FACF66900A2A4F3 /* SocialLoginNetworkProviderFactoryTests.swift */,
 				0F25C17E1FB0CE5C00BD68A5 /* GoogleSocialNetworkProviderTests.swift */,
+				0F713E411FB0E41D0081C6F1 /* SessionUserNetworkProviderTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -854,6 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F713E441FB0E4530081C6F1 /* FirebaseKeys.swift in Sources */,
 				0F3BA5941FA3330900297004 /* Serializable.swift in Sources */,
 				0F3BA5AA1FA3372200297004 /* RootNavigator.swift in Sources */,
 				0F3BA57E1FA3329A00297004 /* LoginPresenter.swift in Sources */,
@@ -919,9 +924,12 @@
 				0F066C8A1FA38AB700F713E9 /* MokUserSessionPersistor.swift in Sources */,
 				0F066C7A1FA37BB900F713E9 /* WalkThroughPresenterTests.swift in Sources */,
 				0F066C821FA3847300F713E9 /* SocialSessionUserLoginUseCaseTests.swift in Sources */,
+				0F713E4A1FB0E70E0081C6F1 /* MockFirebaseAuth.swift in Sources */,
 				0F25C17B1FAD0C5E00BD68A5 /* MockViewController.swift in Sources */,
 				0F066C7F1FA380D700F713E9 /* StubSocialSessionUserLoginUseCase.swift in Sources */,
 				0F066C861FA3869100F713E9 /* StubSocialLoginNetworkProviderFactory.swift in Sources */,
+				0F713E421FB0E41D0081C6F1 /* SessionUserNetworkProviderTests.swift in Sources */,
+				0F713E481FB0E68D0081C6F1 /* MockFirebaseDatabase.swift in Sources */,
 				0F67D9CF1FACF6D400A2A4F3 /* MockSocialNetworkProvider.swift in Sources */,
 				0F066C881FA38A9000F713E9 /* MockSessionUserNetworkProvider.swift in Sources */,
 				0F25C17F1FB0CE5C00BD68A5 /* GoogleSocialNetworkProviderTests.swift in Sources */,
