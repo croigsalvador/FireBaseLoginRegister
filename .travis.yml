@@ -3,6 +3,6 @@ osx_image: xcode9
 
 before_install:
   - gem install cocoapods
-  
-script:
-    - xcodebuild clean test -workspace FireBaseLoginRegister.xcworkspace -scheme FireBaseLoginRegister -destination "platform=iOS Simulator,name=iPhone 7,OS=10.3" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+
+xcode_workspace: FireBaseLoginRegister.xcworkspace
+xcode_scheme: FireBaseLoginRegisterTests
